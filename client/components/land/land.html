@@ -1,0 +1,58 @@
+<div class="land">
+    <div class="container-fluid">
+            
+        <section class="section-booking">
+            
+            <div class="row">
+                <h2>Events</h2>
+            </div>
+            
+            <div class="row">
+                
+                <div class="session-land">
+                    
+                    <div class="col">
+                        <div class="booking-panel">
+
+                            <p>{{ land.sessionState }}</p>
+                            <div class="session-date">{{ land.nextSession | amDateFormat: 'dddd, Do MMMM YYYY' }}</div>
+
+                            <div class="session-booking">
+                                <input type="checkbox" name="running" ng-model="land.running"><label>Running</label><br/>
+                                <input type="checkbox" name="shooting" ng-model="land.shooting"><label>Shooting</label><br/>
+                                <input type="checkbox" name="fencing" ng-model="land.fencing"/><label>Fencing</label>
+                            </div>
+
+                            <button type="submit" ng-click="land.bookSession()" class="btn btn-block btn-primary">
+                                <span>{{ land.bookingBtn }}</span>
+                            </button>
+                        </div>  
+                    </div>
+                </div>
+
+                <!--div class="col-md-6 col-sm-12 box">
+                    <div class="membership">
+                        <div class="person">{{ land.name }}</div>
+                        <p>Your Membership</p>
+                        <div class="member-field">
+                            <label>Membership</label>
+                            {{ land.membershipDescription }}
+                        </div>
+                        <div class="member-field">
+                            <label>Expires</label>
+                            {{ land.membershipExpires | amDateFormat: 'dddd, Do MMMM YYYY' }}
+                        </div>
+                        <div class="member-field">
+                            <label>Balance</label>
+                            {{ land.membershipBalance }}
+                        </div>
+                    </div>
+                </div-->
+
+                
+
+            </div> 
+        </section>
+        
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "name": "toadapp1",
+  "version": "1.0.0",
+  "description": "Toads app to reinforce express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=production && node server.js"
+  },
+  "author": "Richard Meller Gibbs",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.14.1",
+    "datejs": "0.0.2",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.5.4",
+    "mongoose": "^4.2.3",
+    "sendgrid": "^2.0.0",
+    "winston": "^2.2.0"
+  }
+}

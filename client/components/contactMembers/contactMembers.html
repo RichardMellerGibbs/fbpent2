@@ -1,0 +1,123 @@
+<div class="contact">
+    <div class="container-fluid">
+        <section class="contactSection">
+
+            <div class="row">
+                <h2>Email Members</h2>
+            </div>
+            
+            
+            <div class="row">
+                <div class="contactPanel">
+                    <div class="col">
+                        <!--ng-submit="maintUser.updateUser()"-->
+                        
+                        <form name="contactForm"  novalidate class="contactForm">
+                            
+                            <div class="input-group checkBox">
+                                <input type="checkbox" name="admin" id="admin1" ng-model="contactMembers.admin" autofocus>
+                                <label for="admin1">Administrators</label>
+                            </div>
+                            
+                            <div class="input-group checkBox">
+                                <input type="checkbox" name="standard" id="standard1" ng-model="contactMembers.standard">
+                                <label for="standard1">Standard Members</label>
+                            </div>
+                            
+                            <div class="additionalMembers" ng-if="contactMembers.additionalMemebersSection">
+                                <!--span class="additionalTitle">Additional Memeber</span></br>
+                                <span class="additionalList"> {{ contactMembers.additionalMember }} </span-->
+                            
+                                <div class="table-responsive passive">
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Member</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="person in contactMembers.additionalMember">
+                                                <td>{{ person.username }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            
+                            <div class="specificMember">
+                                <button type="submit" ng-click="contactMembers.addSpecific()" ng-if="contactMembers.specificButton" class="btn btn-primary">Add specific Mmeber</button>
+                            </div>
+                            
+                            
+                            
+                            <div class="table-responsive active" ng-if="!contactMembers.specificButton">
+                            
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>email</th>
+                                            <th>Child</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ng-click="user.userDetail(person)"-->
+                                        <tr ng-repeat="person in contactMembers.users | filter:searchName" ng-click="contactMembers.userDetail(person)">
+                                            <td>{{ person.name }}</td>
+                                            <td>{{ person.username }}</td>
+                                            <td>
+                                                <table>
+                                                    <tbody>
+                                                        <tr ng-repeat="child in person.children">
+                                                            <td>{{ child.name }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            
+                            <div class="specificMember">
+                                <button type="submit" ng-click="contactMembers.closeSpecific()" ng-if="!contactMembers.specificButton" class="btn btn-primary">Close Member Search</button>
+                            </div>
+                            
+                            
+                            
+                            <div class="input-group">
+                                <div class="field-title">Subject</div>
+                                <input type="text" name="subject" ng-model="contactMembers.subject" class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group contactDescription">
+                                <div class="field-title">Message</div>
+                                <textarea type="text" name="contactDescription" ng-model="contactMembers.message" class="form-control bg-white">
+                                </textarea>
+                            </div>
+                            
+                            <div class="alert alert-danger fade in validationPanel" ng-if="contactMembers.error">
+                                <!--a class="close" data-dismiss="alert">&times;</a-->
+                                <strong>{{contactMembers.errorType}} </strong>{{ contactMembers.error }}
+                            </div>
+                            
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="contactMembers.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success! </strong>{{ contactMembers.feedback }}
+                            </div>
+                            
+                            <div class="buttonSection"> 
+                                <button type="submit" ng-click="contactMembers.sendEmail()" class="btn btn-block btn-primary">Send</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

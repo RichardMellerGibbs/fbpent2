@@ -1,0 +1,41 @@
+<div class="taster">
+    <div class="container-fluid">
+        <section class="tasterSection">
+
+            <div class="row">
+                <h2>Taster Session Booking</h2>
+            </div>
+            
+            <div class="row">
+
+                <div class="tasterPanel">
+                    <div class="col">
+                        
+                        <div class="table-responsive ">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Session Date</th>
+                                        <th>Name</th>
+                                        <th>Child Name</th>
+                                        <th>email</th>
+                                        <th>Medical Condition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="tstr in taster.tasters" ng-click="taster.tasterDetail(tstr)">
+                                        <td>{{ tstr.sessionDate | amDateFormat: 'dddd, Do MMMM' }}</td>
+                                        <td >{{ tstr.name }}</td>
+                                        <td >{{ tstr.childName }}</td>
+                                        <td >{{ tstr.email }}</td>
+                                        <td >{{ tstr.medical }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

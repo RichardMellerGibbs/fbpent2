@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!--Bootstap mobile-->
+		<title>Five Boroughs Pentathlon</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+      	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+      	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+        <!-- load momentJS (required for angular-moment) -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+        <!-- load angular-moment -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
+        <!--script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script-->
+        <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+        <script src="../js/angular-filepicker.js"></script>
+        <script src="https://api.filestackapi.com/filestack_debug.js"></script>
+        
+        
+      	<!--script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script-->
+		<!--link rel="import" href="../../bower_components/iron-autogrow-textarea.html"-->
+        <!--script src="vendors/js/angular.min.js"></script>
+        <script src="vendors/js/angular-route.min.js"></script>
+        <script src="vendors/js/angular-animate.min.js"></script>
+        <script src="vendors/js/jquery-1.12.0.min.js"></script>
+        <script src="vendors/js/bootstrap.min.js"></script-->
+        
+
+      	<!--Main App-->
+      	<script src="../js/app.js"></script>
+        <!--script src="../js/modules/scrollTo.js"></script-->
+      	<script src="../components/login/mainController.js"></script>
+      	<script src="../components/users/userController.js"></script>
+        <script src="../components/maintUser/maintUserController.js"></script>
+        <script src="../components/maintSession/maintSessionController.js"></script>
+      	<script src="../components/home/homeController.js"></script>
+      	<script src="../components/join/joinController.js"></script>
+      	<script src="../components/land/landController.js"></script>
+        <script src="../components/events/eventController.js"></script>
+        <script src="../components/contactMembers/contactMembersController.js"></script>
+        <script src="../components/maintEvent/maintEventController.js"></script>
+        <script src="../components/maintHome/maintHomeController.js"></script>
+        <script src="../components/tasters/tasterController.js"></script>
+      	<script src="../components/tasters/tasterService.js"></script>
+      	<script src="../components/users/userService.js"></script>
+      	<script src="../components/login/authService.js"></script>
+        
+        <script src="../components/login/localStorageService.js"></script>
+        
+        <script src="../components/sessions/sessionController.js"></script>
+        <script src="../components/sessions/sessionService.js"></script>
+        <script src="../components/events/eventService.js"></script>
+        <script src="../components/maintHome/homeService.js"></script>
+        <script src="../components/contactMembers/contactMembersService.js"></script>
+      	
+      	<!--Styling    -->        
+      	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"-->
+      	
+        <!--link rel="stylesheet" href="vendors/css/bootstrap.min.css"-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        
+        
+      	<!--link rel="stylesheet" href="vendors/css/ionicons.min.css"-->
+      	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      	<!--Custom Styling-->
+      	<link rel="stylesheet" href="css/master.css">
+      	<link rel="stylesheet" href="css/queries.css">
+      	<link rel="stylesheet" href="components/login/login.css">
+      	<link rel="stylesheet" href="components/join/join.css">
+      	<link rel="stylesheet" href="components/land/land.css">
+        <link rel="stylesheet" href="components/users/user.css">
+        <link rel="stylesheet" href="components/maintUser/maintUser.css">
+        <link rel="stylesheet" href="components/maintSession/maintSession.css">
+        <link rel="stylesheet" href="components/events/event.css">
+        <link rel="stylesheet" href="components/maintEvent/maintEvent.css">
+        <link rel="stylesheet" href="components/maintHome/maintHome.css">
+        <link rel="stylesheet" href="components/tasters/taster.css">
+        <link rel="stylesheet" href="components/contactMembers/contactMembers.css">
+        
+        <link rel="stylesheet" href="components/sessions/session.css">
+      	<link href='https://fonts.googleapis.com/css?family=Lato:400,300italic,300,100' rel='stylesheet' type='text/css'> 
+        
+        <!--Favicon-->
+        <link rel="apple-touch-icon" sizes="57x57" href="../images/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../images/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../images/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../images/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../images/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../images/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../images/favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="../images/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="../images/favicons/favicon-194x194.png" sizes="194x194">
+        <link rel="icon" type="image/png" href="../images/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="../images/favicons/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="../images/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="../images/favicons/manifest.json">
+        <link rel="mask-icon" href="../images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="../images/favicons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="../images/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="../images/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+	</head>
+
+    <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
+    
+	<body ng-app="app" ng-controller="mainController as main">
+        
+        <div class="logo" ng-if="!main.navlight">
+            <img src="images/logoblack.gif" alt="Logo">
+            <div class="display-user">{{ main.me.name }} </div>
+        </div>
+        
+        <!--ng-if="main.showTrainingSection"  ng-click="main.displayTrainingSection()"-->
+        <div class="nextSession" ng-if="main.navlight">
+            <a href="" ng-click="main.displayTrainingSection()" ng-if="main.showHideTraining"><span>Next Training Session</span></a>
+            <!--span>{{ main.nextSessionMessage }} {{ main.nextSessionDate | amDateFormat: 'dddd, Do MMMM' }}</span-->
+            <!--div class="box rotate" ng-class="{'box': boxClass, 'circle': !boxClass} "></div-->
+            <!--ng-class="{'showTraining': main.showTrainingSection, 'hideTraining': !main.showTrainingSection}"-->
+            <div class="trainingPanel" ng-class="{'showTraining': main.showTrainingSection, 'hideTraining': !main.showTrainingSection}" >
+                <a class="close closePanel" ng-click="main.closeTrainingSection()" data-dismiss="alert">&times;</a> <!---->
+                <span class="nextActualFriday">{{ main.nextActualFriday | amDateFormat: 'dddd, Do MMMM' }}</span></br>
+            
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="event">Running</td>
+                            <td class="eventResult" ng-if="main.nextFridayRunning.value">cancelled</td>
+                                <td class="eventResult" ng-if="!main.nextFridayRunning.value"><span class="glyphicon glyphicon-ok eventData" aria-hidden="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="event">Shooting</td>
+                            <td class="eventResult" ng-if="main.nextFridayShooting.value">cancelled</td>
+                                <td class="eventResult" ng-if="!main.nextFridayShooting.value"><span class="glyphicon glyphicon-ok eventData" aria-hidden="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="event">Fencing</td>
+                            <td class="eventResult" ng-if="main.nextFridayFencing.value">cancelled</td>
+                                <td class="eventResult" ng-if="!main.nextFridayFencing.value"><span class="glyphicon glyphicon-ok eventData" aria-hidden="true"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            
+                
+
+
+                <div class="nextAvailableFriday" ng-if="main.nextActualFridayCancelled">
+                    <span>{{ main.nextAvailableSession }}</span></br>
+                    <span class="nextAvailableFriday">{{ main.nextAvailableDate | amDateFormat: 'dddd, Do MMMM' }}</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        <nav class="navbar">
+          <div class="container-fluid">
+            
+            <div class="navbar-header">                
+                <button ng-click="main.toggleTraining()"  type="button" class="navbar-toggle collapsed" ng-class="{'navbarlight' : main.navlight}" data-toggle="collapse" data-target="#mvNavbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="mvNavbar">
+              <ul class="nav navbar-nav" ng-class="{'navbarlight' : main.navlight}">
+                <li><a href="#/home">Home</a></li>
+                <li ng-if="!main.loggedIn"><a href="#/join">Join</a></li>
+                <li ng-if="!main.loggedIn"><a href="#/landusers">Members</a></li>
+                <li ng-if="main.loggedIn" class="dropdown">
+                    <a class="anchor" data-target="#" data-toggle="dropdown" class="dropdown-toggle">Members <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/events">News and Events</a></li>
+                        <li><a href="#/landusers">Session Booking</a></li>
+                        <li><a href="#/maintUser/{{main.me.userid}}" >My Account</a></li>
+                        <li><a href="#/sessions">Cancelled Sessions</a></li>
+                        <li ng-if="main.me.admin"><a href="#/allusers">All Members</a></li>
+                        <li ng-if="main.me.admin"><a href="#/tasters">Taster Sessions</a></li>
+                        <li ng-if="main.me.admin"><a href="#/contactMembers">Contact Members</a></li>
+                        <li ng-if="main.me.admin"><a href="#/maintHome">Maintain Home Page</a></li>
+                    </ul>
+                </li>
+                <li ng-if="!main.loggedIn"><a href="#/login">Login</a></li>
+                <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>              
+              </ul>
+            </div>
+              
+          </div>
+        </nav>
+        
+        
+        <div ng-view></div>
+        
+        <!-- FOOTER SECTION -->
+
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 box">
+                        <h3>Training Times</h3>
+                        <p>Friday 6pm-9pm</p>
+                    </div>
+                    <div class="col-md-4 box">
+                        <h3>Address</h3>
+                        <p>Bingham Leisure Centre The Banks Bingham Nottinghamshire NG13 8BL</p>    
+                    </div>
+                    <div class="col-md-4 box">
+                        <ul class="footer-nav">
+                            <li ng-if="!main.loggedIn"><a href="#/join">Join</a></li>
+                            <li><a href="#/home">Home</a></li>
+                            <li><a href="#/landusers">Members</a></li>
+                            <!--li><a href="#/join">Join</a></li-->                            
+                            <!--li><a href="#/login">Login</a></li-->
+                            <li ng-if="!main.loggedIn"><a href="#/login">Login</a></li>
+                            <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row externalLinks">
+                    <div class="col-xs-12">
+                        <ul class="social-nav">
+                            <li><a href="https://www.facebook.com/login.php?api_key=127760087237610&skip_api_login=1&display=popup&nux=0&social_plugin_action=recommend&social_plugin=like&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fplugin.optin%3F_path%3Dplugin.optin%26app_id%3D127760087237610%26client_id%3D127760087237610%26display%3Dpopup%26secure%3Dtrue%26social_plugin%3Dlike%26return_params%3D%257B%2522a%2522%253A%2522a%2522%252C%2522action%2522%253A%2522recommend%2522%252C%2522colorscheme%2522%253A%2522light%2522%252C%2522href%2522%253A%2522http%253A%252F%252Fwww.5boroughspentathlon.co.uk%252F%2522%252C%2522layout%2522%253A%2522box_count%2522%252C%2522locale%2522%253A%2522en_US%2522%252C%2522send%2522%253A%2522false%2522%252C%2522show_faces%2522%253A%2522false%2522%252C%2522ret%2522%253A%2522optin%2522%252C%2522act%2522%253A%2522connect%2522%257D%26login_params%3D%257B%2522nux%2522%253Afalse%252C%2522social_plugin_action%2522%253A%2522recommend%2522%257D%26from_login%3D1"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fstatic.parastorage.com%2Fservices%2Fsanta%2F1.1433.22%2Fstatic%2Fexternal%2Ftwitter.html%3Falign%3Dleft%26compId%3DWTwttrFllw0-e8c%26href%3Dhttps%253A%252F%252Ftwitter.com%252F5BoroughsPent%26lang%3Den%26origin%3Dhttp%253A%252F%252Fwww.5boroughspentathlon.co.uk%26screen_name%3D5BoroughsPent%26show_count%3Dfalse%26show_screen_name%3Dfalse%26widgetType%3DFOLLOW&ref_src=twsrc%5Etfw&screen_name=5BoroughsPent&tw_p=followbutton"><i class="ion-social-twitter"></i></a></li>
+                            <li class="imageLink"><a href="http://www.pentathlongb.org/"><img src="../images/pentathlongb.gif"></img></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row design">
+                    <div class="col-xs-12">
+                        Site design by <a href="#">Reflex</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</body>
+</html>

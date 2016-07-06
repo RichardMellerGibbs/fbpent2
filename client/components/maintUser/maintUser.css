@@ -1,0 +1,104 @@
+.maintUser {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.sectionMaintUsers {
+    padding: 40px 0px;
+}
+
+/* --------------------------------------------------------------*/
+/* TABLE OF MEMBER DATA */
+/* --------------------------------------------------------------*/
+
+.maintPanel {      
+    width: 80%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.maintUserForm {
+    background-color: #f4f4f4;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 1023px) {
+    
+    .maintUserForm { width: 70%; }
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 480px) {
+    
+    .maintUserForm { width: 95%; }
+    .buttonPanel button { 
+        display: block;
+        width: 100%;
+        margin-bottom: 5px; 
+    };
+}
+
+.maintUserForm .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.maintUserForm .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+/* --------------------------------------------------------------*/
+/* TABLE OF CHILD DATA */
+/* --------------------------------------------------------------*/
+/* limit the size of the table and add scrollbars */
+.table-responsive.children {                 
+    /*overflow-y: hidden;*/
+    overflow-x:scroll;
+    overflow-y:scroll;
+    height: 100px;
+    /*border: 1px solid blue;*/
+}
+
+.table-responsive.children.manyChild {
+    overflow-y:scroll;
+}
+
+.table-responsive th,
+.table-responsive td {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+/* --------------------------------------------------------------*/
+/* ADD CHILD SECTION */
+/* --------------------------------------------------------------*/
+
+.addChildSection {
+    padding-top: 20px;
+}
+
+/* --------------------------------------------------------------*/
+/* BUTTON PANEL */
+/* --------------------------------------------------------------*/
+
+.buttonPanel {
+    padding-top: 20px;
+}
+
+/* --------------------------------------------------------------*/
+/* WARNING PANEL */
+/* --------------------------------------------------------------*/
+
+.warningPanel,
+.validationPanel {
+    font-size: 90%;
+    margin-top: 15px;
+    margin-bottom: 5px; 
+}
+
+

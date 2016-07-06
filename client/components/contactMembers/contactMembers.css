@@ -1,0 +1,98 @@
+.contact {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+.contactPanel { 
+    width: 40%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 1023px) {
+    .contactPanel { width: 70%; }
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 480px) {
+    .contactPanel { width: 95%; }
+}
+
+/* --------------------------------------------------------------*/
+/* MAIN FORM */
+/* --------------------------------------------------------------*/
+
+.contactForm {
+    background-color: #f4f4f4;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+.contactForm .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.contactForm .input-group.checkBox {
+    /*border: solid 1px blue;*/
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.contactForm .input-group.checkBox label {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.contactForm .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.specificMember {
+    margin: 10px auto;
+}
+
+.contactForm .table-responsive {  
+    /* limit the size of the table and add scrollbars */
+    font-size: 90%;
+    height:200px;
+    overflow:scroll;
+}
+
+.contactForm .table-responsive.active{
+    height:200px;
+    overflow:scroll;
+}
+
+.contactForm .table-responsive.passive{
+    height:150px;
+    overflow:scroll;
+}
+
+.additionalMembers .table-responsive .table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: transparent;
+    cursor: default; 
+    cursor: default; 
+}
+
+.contactForm .contactDescription textarea {
+    height: 200px;
+}
+
+.contactForm .buttonSection {
+    margin-top: 0;
+}
+/*
+.alert-success.hidePanel {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}*/
+
+
+
+

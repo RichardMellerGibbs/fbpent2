@@ -3,3 +3,8 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+/db/data/
+launch_mongo.bat
+launch_server.bat
+config.js
+/resources/

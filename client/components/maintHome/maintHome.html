@@ -1,0 +1,56 @@
+<!-- Maintain Home data -->
+<div class="maintHome">
+    
+    <div class="container-fluid">
+            
+        <section class="sectionMaintHome">
+            
+            <div class="row">
+                <h2>Home Page Maintenance</h2>
+            </div>
+            
+            <div class="row">
+                <div class="maintHomePanel">
+                    <div class="col">
+                        
+                        <form name="maintHomeForm" class="maintHomeForm">
+                            
+                            <div class="input-group">
+                                <div class="field-title">Identifier</div>
+                                <select name="repeatSelect" id="repeatSelect" ng-model="maintHome.repeatSelect" ng-click="maintHome.loadItem()">
+                                      <option ng-repeat="option in maintHome.homeData" value="{{option._id}}">{{option.name}}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="field-title">Title</div>
+                                <input type="text" name="homeIdentifier" ng-model="maintHome.selectedItem.title" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group itemDescription">
+                                <div class="field-title">Description</div>
+                                <textarea name="homeIdentifier" ng-model="maintHome.selectedItem.description" autofocus class="form-control bg-white">
+                                </textarea>
+                            </div>
+                            
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintHome.error">
+                                <strong>{{maintHome.errorType}} </strong>{{ maintHome.error }}
+                            </div>
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintHome.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success! </strong>{{ maintHome.feedback }}
+                            </div>
+                            
+                            <div class="buttonSection">
+                                <button type="submit" ng-click="maintHome.updateHome()" class="btn btn-primary" ng-if="maintHome.updateButton">Update</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>

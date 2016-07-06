@@ -1,0 +1,78 @@
+.maintEvent {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.sectionMaintEvent {
+    padding: 40px 0px;
+}
+
+/* --------------------------------------------------------------*/
+/* TABLE OF EVENT DATA */
+/* --------------------------------------------------------------*/
+
+.maintEventPanel {      
+    width: 80%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.maintEventForm {
+    background-color: #f4f4f4;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+    min-width: 280px;
+}
+
+.maintEventForm .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.maintEventForm .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.eventDescription textarea {
+    height: 100px;
+}
+
+.eventDescription {
+    padding-bottom: 0px;
+}
+
+.maintEventPanel .buttonSection {
+    margin-top: 5px;
+    /*margin: 0 auto;*/
+    /*margin-top: 10%;*/
+    /*text-align: center;*/
+}
+
+.mainImage img {
+    max-height: 100px;
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 480px) {
+    
+    .buttonSection button { 
+        display: block;
+        width: 100%;
+        margin-bottom: 5px; 
+    };
+}
+
+
+/* --------------------------------------------------------------*/
+/* WARNING PANEL */
+/* --------------------------------------------------------------*/
+
+.warningPanel,
+.validationPanel {
+    font-size: 90%;
+    margin-top: 5px;
+    margin-bottom: 15px; 
+}

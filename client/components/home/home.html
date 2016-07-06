@@ -1,0 +1,250 @@
+<div class="partial" >
+    <!---div class="container-fluid"-->
+        <header ng-class="{'homebg' : home}">
+            
+             <!--nav was here -->
+
+            <div class="club-title">
+                <h1>Five Boroughs Pentathlon</h1>
+                <h2>Multisport Training</h2>
+            </div>				
+        </header>
+    <!--/div-->
+
+     <!-- PENTATHLON EXPLAINED SECTION -->
+    <!--Five diciplines originally designed to demonstrate core military skills including the most noble of sports Fencing and Shooting-->
+    <section class="section-pent">
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Modern Pentathlon</h2>
+                <div class="long-copy">
+                    <p>{{ home.diciplineTitle }}</p>
+                    <!--p>Five diciplines originally designed to demonstrate core military skills including the most noble of sports Fencing and Shooting</p-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 col-sm-4 box img-big ">
+                    <img src="../images/swimming.jpg"/>
+                    <h3>{{ home.dicipline1Title }}</h3>
+                    <!--SWIMMING-->
+                    <p>{{ home.dicipline1Description }}</p>
+                    <!--p>Lessons and coaching sessions are organised inline with the regional Triathlon competions</p-->
+                </div>
+                <div class="col-md-2 col-sm-4 box img-big ">
+                    <img src="../images/run.jpg"/>
+                    <h3>{{ home.dicipline2Title }}</h3>
+                    <!--RUNNING-->
+                    <p>{{ home.dicipline2Description }}</p>
+                    <!--p>Training sessions take place each week with qualified running coaches</p-->
+                </div>
+                <div class="col-md-2 col-sm-4 box img-big ">
+                    <img src="../images/shoot.jpg"/>
+                    <h3>{{ home.dicipline3Title }}</h3>
+                    <!--SHOOTING-->
+                    <p>{{ home.dicipline3Description }}</p>
+                    <!--p>Both Air and Lazer Pistol shooting training with three dedicated coaches</p-->
+                </div>
+                <div class="col-md-2 col-sm-4 box img-big ">
+                    <img src="../images/fence2.jpg"/>
+                    <h3>{{ home.dicipline4Title }}</h3>
+                    <!--FENCING-->
+                    <p>{{ home.dicipline4Description }}</p>
+                    <!--p>Led by the former director of fencing coaching for the UK</p-->
+                </div>
+                <div class="col-md-2 col-sm-4 box img-big">
+                    <img src="../images/horse.jpg"/>
+                    <h3>{{ home.dicipline5Title }}</h3>
+                    <!--RIDING-->
+                    <p>{{ home.dicipline5Description }}</p>
+                    <!--p>Riding lessons are organised in conjunction with the Pony club</p-->
+                </div>
+                <!--div class="col-md-1 box">
+                </div-->
+            </div>
+        </div>
+    </section>
+    
+    <!-- FRIDAY EVENINGS SECTION -->
+    
+    <section class="section-weekly-train">
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Weekly Training</h2>
+                <div class="long-copy">
+                    <p>{{ home.weekTrainTitle }}</p>
+                    <!--p>Training takes place on Friday evenings. Three hourly diciplines are covered starting at 6pm</p-->
+                </div>
+            </div>
+            
+            <div class="row">
+                <!--h3>Friday Evening</h3-->
+
+                <div class="col-md-4 col-sm-4 box">
+                    <!--h3>Running 6pm - 7pm</h3-->
+                    <h3>{{ home.weekTrain1Title }}</h3>
+                    <!--Running 6pm - 7pm-->
+                    <img src="../images/club_run2.jpg"/>
+                    <p>{{ home.weekTrain1Description }}</p>
+                    <!--p>The leisure centre provides a flood lit athlectics track and training focuses on building strength and stamina suitable for all multisport events including Triathlons</p-->
+                </div>
+                
+                <div class="col-md-4 col-sm-4 box">
+                    <h3>{{ home.weekTrain2Title }}</h3>
+                    <!--Shooting 7pm - 8pm-->
+                    <img src="../images/club_shoot.jpg"/>
+                    <p>{{ home.weekTrain2Description }}</p>
+                    <!--p>The highly organised 10 meter shooting range is available in the leisure center gym. Both air pistol and new newly introduced Lazer pistols are available</p-->
+                </div>
+                
+                <div class="col-md-4 col-sm-4 box">
+                    <h3>{{ home.weekTrain3Title }}</h3>
+                    <!--Fencing 8pm - 9pm-->
+                    <img src="../images/club_fence.jpg"/>
+                    <p>{{ home.weekTrain3Description }}</p>
+                    <!--p>Adjcent to the shooring range is the fencing gym. Run by two highly experienced naional coaches the quality of training is extremely high and all althlets enjoy the light hearted yet committed approach to the sport</p-->
+                </div>
+            </div>
+            
+            <!-- COACHES -->
+            
+            <div class="row coaching">
+                <h2>Coaches</h2>
+            </div>
+            
+            <div class="row">
+                <div class="coaching">
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.runCoach1Title }}</h3>
+                        <!--Kelly Haywood-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/kelly.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.runCoach1Description }}</p>
+                            <!--p>Kelly has coached with Newark Athletics and is now the lead coach for Pentathlon. She is a great run technician and has a keen eye for detail.</p-->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.shootCoach1Title }}</h3>
+                        <!--Paul Hooper-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/paul_hooper.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.shootCoach1Description }}</p>
+                            <!--p>Club founder and Chairman, Paul is a qualified instructor and Range Officer. He has experience in teaching shooting at Pony Club training sessions.</p-->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.fenceCoach1Title }}</h3>
+                        <!--Alan Skipp-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/alan_skipp.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.fenceCoach1Description }}</p>
+                            <!--p>Former Director of Coaching for British Fencing and club lead Fencing Coach. Alan has immence experience in coaching structure and makes the learning experience fun and exciting from beginners through to International fencers.</p-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="row">
+                <div class="coaching">
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.runCoach2Title }}</h3>
+                        <!--Robert Evans-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/runCoach.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.runCoach2Description }}</p>
+                            <!--p>Previously a track cyclist, marathon runner and all-round fitness fanatic. He has been coaching running and shooting for Pony Club Tetrathlon for several years.</p-->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.shootCoach2Title }}</h3>
+                        <!--Dave Hallam-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/dave_hallam.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.shootCoach2Description }}</p>
+                            <!--p>Dave Hallam has vast experience in teaching pistol shooting. Always popular with our youngest shooters, Dave has the patience and experience to introduce youngsters to the sport. A qualified Club Instructor and Range Officer.</p-->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 box">
+                        <h3>{{ home.fenceCoach2Title }}</h3>
+                        <!--Sam Boyle-->
+                        <div class="col-md-12 col-lg-6 left-col">
+                            <img src="../images/danny.jpg"/>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <p>{{ home.fenceCoach2Description }}</p>
+                            <!--p>Actively competing for Great Britain achiving Team bronze at the 2015 Commonwealth Games. He is the assistant Coach and at 21 years he’s a great role model to inspire your year 7s to year 13s and adults.</p-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- TASTER SECTION -->
+    
+    <section class="section-taster" >
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Come Along Any Friday</h2>
+                <div class="taster-intro">
+                    <p>{{ home.tasterTitle }}</p>
+                    <!--p>The club trains every Friday 6-9pm. If you would like to book a taster session to try one or all of the disiplines then please complete the form below</p-->
+                </div>    
+            </div>
+            
+            <div class="row">
+                <!--div class="col-md-4 taster-form"-->
+                <!-- col-sm-8 col-md-4 -->
+                    <form ng-submit="home.saveTaster()" class="taster-form">			
+                        <div class="input-group">
+                          <input type="text" ng-model="home.name" class="form-control bg-grey" placeholder="name*" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                          <input type="text" ng-model="home.childName" class="form-control bg-grey" placeholder="child name*" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                          <input type="text" ng-model="home.email" class="form-control bg-grey" placeholder="email*" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                          <input type="text" ng-model="home.medical" class="form-control bg-grey" placeholder="any relavant medical condition" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <!-- Fridays only -->
+                          <input type="date" step=7 min=2014-09-12 ng-model="home.sessionDate" class="form-control bg-grey">
+                        </div>
+                        <p class="discrete">* required</p>
+                        
+                        <div class="alert alert-success fade in warningPanel" ng-if="home.feedback">
+                            <a class="close" data-dismiss="alert">&times;</a> 
+                            {{ home.feedback }}
+                        </div>
+                        
+                        <div class="alert alert-danger fade in validationPanel" ng-if="home.error">
+                                <strong>{{home.errorType}} </strong>{{ home.error }}
+                            </div>
+
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                <!--/div-->
+            </div>
+        </div>
+    </section>
+    
+    <!-- footer was here -->
+    
+</div>
+
+			

@@ -1,0 +1,84 @@
+<div class="session">
+    <div class="container-fluid">
+        <section class="cancel-session">
+
+            <div class="row">
+                <h2>Cancelled Sessions</h2>
+            </div>
+
+            
+            <div class="row" ng-if="session.me.admin">
+                
+                <!--div class="sessionPanel"-->
+                    <button type="submit" ng-if="!session.showInput" ng-click="session.addInput()" class="btn btn-block btn-primary add-btn">Add Cancelled Session</button>
+
+                    <div class="addDate" ng-if="session.showInput">
+                        <div class="row">
+                            <form ng-submit="session.addSession()" class="taster-form">			
+
+                                <div class="input-group">
+                                    <!-- Fridays only -->
+                                  <input type="date" step=7 min=2014-09-12 ng-model="session.newSessionDate" class="form-control bg-grey">
+                                </div>
+
+                                <div class="alert alert-danger" ng-if="session.error">
+                                    There was a problem<br>
+                                    {{ session.error }}
+                                </div>
+
+                                <button type="submit" class="btn btn-block btn-primary btn-upd">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                <!--/div-->
+            </div>
+            
+            
+            <div class="row">
+
+                <div class="sessionPanel">
+                    <div class="col">
+                        
+                        <!--ul class="list-group cancelList">
+
+                            <li class="list-group-item" ng-repeat="session in session.sessions">
+
+                                {{ session.sessionDate | amDateFormat: 'dddd, Do MMMM' }}  
+    
+                                <a type="submit" ng-click="$parent.session.deleteSession( session._id )" class="badge btn-danger">X</a>
+                            </li>
+                            
+
+                        </ul-->
+                        <div class="table-responsive" ng-class="{'showHover': session.me.admin, 'hideHover': !session.me.admin}">
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Session Date</th>
+                                        <th>Running</th>
+                                        <th>Shooting</th>
+                                        <th>Fencing</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr ng-repeat="sess in session.sessions" ng-click="session.sessionDetail(sess)">
+                                        <td>{{ sess.sessionDate | amDateFormat: 'dddd, Do MMMM' }}</td>
+                                        <td ng-if="sess.running" class="sessionCancelled">X</td>
+                                            <td ng-if="!sess.running"></td>
+                                        <td ng-if="sess.shooting" class="sessionCancelled">X</td>
+                                            <td ng-if="!sess.shooting"></td>
+                                        <td ng-if="sess.fencing" class="sessionCancelled">X</td>
+                                            <td ng-if="!sess.fencing"></td>
+                
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>

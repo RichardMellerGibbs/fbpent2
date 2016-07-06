@@ -1,0 +1,51 @@
+.maintHome {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.sectionMaintHome {
+    padding: 40px 0px;
+}
+
+/* --------------------------------------------------------------*/
+/* TABLE OF HOME DATA */
+/* --------------------------------------------------------------*/
+
+.maintHomePanel {      
+    width: 80%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.maintHomeForm {
+    background-color: #f4f4f4;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+    min-width: 280px;
+}
+
+
+.maintHomeForm .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.maintHomeForm .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.maintHomeForm .input-group select {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.itemDescription textarea {
+    height: 100px;
+}
+
+.maintHomePanel .buttonSection {
+    margin-top: 10px;
+}

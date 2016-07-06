@@ -1,0 +1,98 @@
+<!--All Users-->
+<div class="allusers">
+    <div class="container-fluid">
+        <section class="section-users">
+                   
+            <div class="row">
+                <h2>Club Members</h2>
+            </div>
+
+            <!--div class="page-header">
+                <h1>
+                    Users
+                    <a href="/users/create" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        New User
+                    </a>
+                </h1>
+            </div-->
+
+            <!-- LOADING MESSAGE -->
+            <!--div class="jumbotron text-center" ng-show="user.processing">
+                <span class="glyphicon glyphicon-repeat spinner"></span>
+                <p>Loading Users...</p>
+            </div-->
+            
+            <div class="row">
+                <div class="searchPanel">
+                    <div class="col">
+                        
+                        <form class="searchForm">
+                            
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                                <input type="text" class="form-control" placeholder="Search Members" ng-model="searchName">
+                            </div>      
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="usersPanel">
+                    <div class="col">
+
+                        <!--ul class="list-group userList">
+
+                            <li class="list-group-item" ng-repeat="person in user.users">
+
+                                {{ person.name }}
+                                {{ person.username }}
+                                <a type="submit" ng-click="$parent.session.deleteSession( session._id )" class="badge btn-danger">X</a>
+                            </li>
+
+
+                        </ul--> 
+                        
+                        <div class="memberCount">Total Members {{ user.memberCount }}</div>
+                        
+                        <div class="table-responsive">
+                            
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>email</th>
+                                        <th>Child Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--ng-click="user.userDetail(person)"-->
+                                    <tr ng-repeat="person in user.users | filter:searchName" ng-click="user.userDetail(person)">
+                                        <td>{{ person.name }}</td>
+                                        <td>{{ person.phone }}</td>
+                                        <td>{{ person.username }}</td>
+                                        <td>
+                                            <table>
+                                                <tbody>
+                                                    <tr ng-repeat="child in person.children">
+                                                        <td>{{ child.name }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>    

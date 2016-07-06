@@ -1,0 +1,46 @@
+.land {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.section-booking {
+    padding: 40px 0px;
+}
+
+.session-land {
+    width: 40%;
+    margin: 0 auto;
+    min-width: 270px;
+    max-width: 350px;
+    margin-top:10px;
+}
+
+.booking-panel {
+    background-color: #fff;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+.booking-panel p,
+.booking-panel .session-date {
+    font-size: 90%;
+    text-align: center;    
+}
+
+.session-booking {
+    width: 100px;
+    margin: 10% auto;
+    /*border: solid 1px blue;*/
+}
+
+.session-booking label {
+    padding-left: 10px;
+    font-size: 90%;
+    font-weight: 400;
+}
+    
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!--div class="container-fluid section-login"-->
+<div class="login">
+
+    <section class="section-login">
+
+        <div class="row">
+            <h2>Login</h2>
+        </div>
+
+        <div class="row">
+            
+            <div class="login-panel">
+                
+                <div class="col">
+
+                    <form  ng-submit="login.doLogin()" class="login-form">
+
+                        <div class="input-group">
+                            <div class="field-title">Email address</div>
+                            <input type="text" autocomplete="new-password" ng-model="login.loginData.username" autofocus class="form-control bg-white">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="field-title">Password</div>
+                            <input type="password" autocomplete="new-password" ng-model="login.loginData.password" class="form-control bg-white">
+                        </div>
+
+                        <!-- Reports any login errors -->
+                        <div class="alert alert-danger" ng-if="login.error">
+                            {{ login.error }}
+                        </div>
+
+                        <button type="submit" class="btn btn-block btn-primary">
+                            <span ng-if="!login.processing">Sign in</span>
+                            <span ng-if="login.processing" class="spinner"><span class="glyphicon glyphico\n-repeat"></span></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,61 @@
+/* --------------------------------------------------------------*/
+/* JOIN SECTION */
+/* --------------------------------------------------------------*/
+
+/* -------  Background -------*/
+
+.join {
+	background-color: #f4f4f4;
+}
+
+.section-join {
+    padding-top: 0px;
+}
+
+.join-intro {
+    text-align: center;
+}
+
+.join-form {
+    background-color: #fff;
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+.join-form .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.join-form .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.form-control:focus {
+    border-color: #c33636;
+    box-shadow: none;
+}
+
+.form-control {
+    font-weight: 500;
+}
+
+/* -------  larger screens -------*/
+@media only screen and (max-width: 1023px) {
+    
+    .join-form { width: 70%; };
+}
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 480px) {
+    
+    .join-form { width: 85%; }
+    .buttonPanel button { 
+        display: block;
+        width: 100%;
+        margin-bottom: 5px; 
+    };
+}

@@ -1,0 +1,68 @@
+<!--header ng-class="{'offwhitebg' : join.joinLoaded}"-->
+<div class="join">
+    
+<section class="section-join">
+    <div class="row">
+        <h2>Sign Up</h2>
+        <div class="join-intro">
+            <p>Please complete the form to join</p>
+        </div>    
+    </div>
+    
+    <div class="row">
+            
+        <!--novalidate prevents default HTML5 validation whichj is ugly -->
+        <form name="joinForm" ng-submit="join.doJoin()" novalidate class="join-form">
+
+            <div class="input-group">
+                <div class="field-title">Your Full Name</div>
+                <input type="text" name="name" ng-model="join.userData.name" autofocus class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Email</div>
+                <input type="email" name="username" ng-model="join.userData.username" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Phone</div>
+                <input type="text" name="phone" ng-model="join.userData.phone" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Password</div>
+                <input type="password" name="password" ng-model="join.userData.password" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Password again</div>
+                <input type="password" name="passwordAgain" ng-model="join.userData.passwordAgain" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Child Name</div>
+                <input type="text" ng-model="join.userData.childName" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Child Date of birth</div>
+                <input type="date" ng-model="join.userData.childDOB" class="form-control bg-white">
+            </div>
+            <div class="input-group">
+                <div class="field-title">Any medical conditions</div>
+                <input type="text" ng-model="join.userData.childMedicalCondition" class="form-control bg-white">
+            </div>
+
+            <!--p class="discrete">* required</p-->
+
+            <!-- Reports any sign up errors -->
+            <div class="alert alert-danger" ng-if="join.error">
+                There was a problem<br>
+                {{ join.error }}
+            </div>
+            
+            <div class="buttonPanel">
+                <button type="submit" class="btn btn-block btn-primary">
+                    <span >Join Five Boroughs Pentathlon</span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
+</div>
+<!--/header-->

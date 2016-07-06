@@ -1,0 +1,82 @@
+<!-- Maintain event -->
+<div class="maintEvent">
+    
+    <div class="container-fluid">
+            
+        <section class="sectionMaintEvent">
+            
+            <div class="row">
+                <h2>Event Details</h2>
+            </div>
+            
+            <div class="row">
+                <div class="maintEventPanel">
+                    <div class="col">
+                        
+                        <form name="maintEventForm" class="maintEventForm">
+                            
+                            <div class="input-group">
+                                <div class="field-title">Event Date</div>
+                                <input type="date" name="eventDate" ng-model="maintEvent.eventDate.value" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="field-title">Title</div>
+                                <input type="text" name="eventTitle" ng-model="maintEvent.event.title" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group eventDescription">
+                                <div class="field-title">Description</div>
+                                <textarea type="text" name="eventDescription" ng-model="maintEvent.event.description" autofocus class="form-control bg-white">
+                                </textarea>
+                            </div>
+                           
+                            
+                            
+                            
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintEvent.error">
+                                <!--a class="close" data-dismiss="alert">&times;</a-->
+                                <strong>{{maintEvent.errorType}} </strong>{{ maintEvent.error }}
+                            </div>
+                            
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintEvent.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success! </strong>{{ maintEvent.feedback }}
+                            </div>
+                            
+                            <div class="input-group imageUpload">
+                                <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
+                                <div class="field-title">Choose Image</div>
+                                <button type="button" class="btn btn-default" ng-click="maintEvent.imageUpload()">
+                                    Upload <span class="caret"></span>
+                                </button>    
+
+                                <div class="mainImage">
+                                    <!-- Show the thumbnail only when the picture is uploaded -->
+                                    <!--ng-if="maintEvent.event.picture"-->
+                                    <img ng-src="{{maintEvent.event.picture | fpConvert: {filter:'sharpen'} }}">
+                                    <!--a href="{{maintEvent.event.picture}}" class="thumbnail" ng-if="maintEvent.event.picture"                                                                                <!-- the picture is rendered with width: 500 and sharpened -->
+                                </div>
+                            </div>
+
+                            
+                            
+                            <div class="buttonSection">
+                                <button type="submit" ng-click="maintEvent.addEvent()" class="btn btn-primary" ng-if="maintEvent.addButton">Add</button>
+                                <button type="submit" ng-click="maintEvent.updateEvent()" class="btn btn-primary" ng-if="maintEvent.updateButton">Update</button>
+                                <button type="submit" ng-click="maintEvent.confirmDelete()" class="btn btn-primary" ng-if="maintEvent.deleteButton">Delete</button>
+                                
+                                <!--Are you sure buttons for deleting event -->
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintEvent.closeDeleteSection()" ng-if="maintEvent.showDeleteSection">Close</button>
+                                <button type="" class="btn btn-danger btn-upd" ng-click="maintEvent.deleteEvent(maintEvent.eventId)" ng-if="maintEvent.showDeleteSection">Confirm Delete</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>

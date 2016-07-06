@@ -1,0 +1,91 @@
+<!-- Maintain session -->
+
+<div class="maintSession">
+    
+    <div class="container-fluid">
+            
+        <section class="sectionSessionMaint">
+            
+            <div class="row">
+                <h2>Session Details</h2>
+            </div>
+            
+            <div class="row">
+                
+                <div class="sessionLand">
+                    
+                    <div class="col">
+                        <div class="maintSessionPanel">
+
+                            <!--p>{{ land.sessionState }}</p-->
+                            <!--div class="sessionDate">{{ land.nextSession | amDateFormat: 'dddd, Do MMMM YYYY' }}</div-->
+                            <div class="sessionDate">
+                                <label>Session Date</label>
+                                <div class="dateInput"><input type="date" step=7 min=2014-09-12 name="sessionDate" ng-model="maintSession.sessionDate.value"></div>
+                            </div>
+
+                            <div class="sessionMaint">
+                                <input type="checkbox" name="running" ng-model="maintSession.running"><label>Cancel Running</label><br/>
+                                <input type="checkbox" name="shooting" ng-model="maintSession.shooting"><label>Cancel Shooting</label><br/>
+                                <input type="checkbox" name="fencing" ng-model="maintSession.fencing"/><label>Cancel Fencing</label>
+                            </div>
+                            
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintSession.error">
+                                <!--a class="close" data-dismiss="alert">&times;</a-->
+                                <strong>{{maintSession.errorType}} </strong>{{ maintSession.error }}
+                            </div>
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintSession.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success! </strong>{{ maintSession.feedback }}
+                            </div>
+
+                            <div class="buttonSection">
+                                <button type="submit" ng-click="maintSession.addSession()" class="btn btn-primary" ng-if="maintSession.addButton">Add</button>
+                                <button type="submit" ng-click="maintSession.updateSession()" class="btn btn-primary" ng-if="maintSession.updateButton">Update</button>
+                                <button type="submit" ng-click="maintSession.confirmDelete()" class="btn btn-primary" ng-if="maintSession.deleteSessionButton">Delete</button>
+                                
+                                <!--Are you sure buttons for deleting member -->
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintSession.closeDeleteSection()" ng-if="maintSession.showDeleteSection">Close</button>
+                                <button type="" class="btn btn-danger btn-upd" ng-click="maintSession.deleteSession(maintSession.sessionID)" ng-if="maintSession.showDeleteSection">Confirm Delete</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </div>
+</div>
+
+
+
+
+<!--div class="maintSession">
+    <div class="container-fluid">
+        <section class="sectionMaintSession">
+            
+            <div class="row">
+                <h2>Session Details</h2>
+            </div>
+            
+            <div class="row">
+                <div class="thisSession"-->
+                    <!--div class="col">
+                        
+                        <div class="sessionPanel">
+                            <label class="session-date">Session Date</label><input type="text" name="name" ng-model="maintSession.sess.sessionDate">
+
+                            <div class="sessionBox">
+                                <input type="checkbox" name="running" ng-model="maintSession.sess.running"><label>Cancel Running</label><br/>
+                                <input type="checkbox" name="shooting" ng-model="maintSession.sess.shooting"><label>Cancel Shooting</label><br/>
+                                <input type="checkbox" name="fencing" ng-model="maintSession.sess.fencing"><label>Cancel Fencing</label>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div-->
+

@@ -1,0 +1,27 @@
+.taster {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.tasterSection {
+    padding: 40px 0px;
+}
+
+/* --------------------------------------------------------------*/
+/* TASTER PANEL */
+/* --------------------------------------------------------------*/
+
+.tasterPanel { 
+    width: 60%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+
+/* Turns bootstrap table row off on if user is not admin. Also returns the pointer to the default */
+.tasterPanel .table-responsive .table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: transparent;
+    cursor: default; 
+    cursor: default; 
+}

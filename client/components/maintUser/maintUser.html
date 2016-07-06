@@ -1,0 +1,124 @@
+<!-- Maintain user -->
+
+<div class="maintUser">
+    <div class="container-fluid">
+        <section class="sectionMaintUsers">
+            
+            <div class="row">
+                <h2>Account Details</h2>
+            </div>
+            
+            <div class="row">
+                <div class="maintPanel">
+                    <div class="col">
+                        <!--ng-submit="maintUser.updateUser()"-->
+                        
+                        <form name="maintUserForm"  novalidate class="maintUserForm">
+
+                            <div class="input-group">
+                                <div class="field-title">Name</div>
+                                <input type="text" name="name" ng-model="maintUser.member.name" autofocus class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="field-title">email</div>
+                                <input type="email" name="username" ng-model="maintUser.member.username" class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="field-title">Phone</div>
+                                <input type="text" name="phone" ng-model="maintUser.member.phone" class="form-control bg-white">
+                            </div>
+                            
+                            <div class="input-group" ng-if="maintUser.showAdmin">
+                                <div class="field-title">Admin User</div>
+                                <input type="checkbox" name="admin" ng-model="maintUser.member.admin">
+                            </div>
+                            
+                            <!-- Children ng-class="{'oneChild' : maintUser.manyChild}"-->
+                            <div class="table-responsive children" ng-class="{'manyChild' : maintUser.manyChild}">
+                            
+                                <table class="table table-bordered table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <th>Child Name</th>
+                                            <th>Date of birth</th>
+                                            <th>Any medical condition</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ng-click="user.userDetail(child)"-->
+                                        <tr ng-repeat="child in maintUser.member.children | filter:searchName" >
+                                            <td>{{ child.name }}</td>
+                                            <td>{{ child.dateOfBirth | amDateFormat: 'DD MMM YYYY' }}</td>
+                                            <td>{{ child.medicalCondition }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="addChildSection" ng-if="maintUser.showChildInput">
+                                
+                                <div class="input-group">
+                                    <div class="field-title">Child Name</div>
+                                    <input type="text" ng-model="maintUser.childName" class="form-control bg-white">
+                                </div>
+                                <div class="input-group">
+                                    <div class="field-title">Child Date of birth</div>
+                                    <input type="date" ng-model="maintUser.childDOB" class="form-control bg-white">
+                                </div>
+                                <div class="input-group">
+                                    <div class="field-title">Any medical conditions</div>
+                                    <input type="text" ng-model="maintUser.medicalCond" class="form-control bg-white">
+                                </div>
+
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintUser.addChild()">Add</button>
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintUser.closeChildSecction()">Close</button>
+                            </div>
+                            
+                            
+                            <div class="alert alert-danger fade in validationPanel" ng-if="maintUser.error">
+                                <!--a class="close" data-dismiss="alert">&times;</a-->
+                                <strong>{{maintUser.errorType}} </strong>{{ maintUser.error }}
+                            </div>
+                            
+                            
+                            <div class="alert alert-success fade in warningPanel" ng-if="maintUser.feedback">
+                                <a class="close" data-dismiss="alert">&times;</a> 
+                                <strong>Success! </strong>{{ maintUser.feedback }}
+                            </div>
+                            
+                            
+                            
+                            <div class="buttonPanel">
+                                <button type="submit" class="btn btn-primary updateMember" ng-if="maintUser.updateButton" ng-click="maintUser.updateUser()">
+                                    <span >Update</span>
+                                </button>
+                                
+                                <button type="submit" class="btn btn-primary addChild" ng-if="maintUser.addChildButton" ng-click="maintUser.addChildSecction()">
+                                    <span >Add Child</span>
+                                </button>
+
+
+                                <button class="btn btn-danger deleteMember" ng-if="maintUser.deleteMemberButton" ng-if="maintUser.showAdmin" ng-click="maintUser.confirmDelete()">
+                                    <span>Delete Member</span>
+                                </button>
+                                
+                                <!--Are you sure buttons for deleting member -->
+                                <button type="" class="btn btn-primary btn-upd" ng-click="maintUser.closeDeleteSection()" ng-if="maintUser.showDeleteSection">Close</button>
+                                <button type="" class="btn btn-danger btn-upd" ng-click="maintUser.deleteUser(maintUser.member._id)" ng-if="maintUser.showDeleteSection">Confirm Delete</button>
+                            </div>
+                            
+                            
+                            
+                        </form>
+                        
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+        </section>
+    </div>
+</div>

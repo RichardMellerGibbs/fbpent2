@@ -1,0 +1,67 @@
+/* SESSION Styling */
+
+.session {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.cancel-session {
+    padding: 40px 0px;
+}
+
+.sessionPanel .table-responsive {
+    max-height: 300px;
+    overflow-y:scroll; 
+}
+
+/* Turns bootstrap table row hover on if user is admin. Also enables the pointer*/
+.table-responsive.showHover .table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: #f4f4f4;
+    cursor: pointer; 
+    cursor: hand; 
+}
+
+/* Turns bootstrap table row off on if user is not admin. Also returns the pointer to the default */
+.table-responsive.hideHover .table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: transparent;
+    cursor: default; 
+    cursor: default; 
+}
+
+
+th {
+    text-align: center;
+}
+
+td.sessionCancelled {
+    color: red;
+    font-weight: 600;
+    font-size: 100%;
+    text-align: center;
+}
+
+.sessionPanel,
+.addDate {
+    width: 40%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.addDate .input-group {
+    border: solid 1px #a6a6aa;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+button.btn-upd {
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+button.add-btn {
+    max-width: 180px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,296 @@
+/* --------------------------------------------------------------*/
+/* MEDIA QUERIES */
+/* --------------------------------------------------------------*/
+
+/* -------  Big tablets to 1200px (widths smaller than the 1140px row)  -------*/
+@media only screen and (max-width: 1200px) {
+
+    .display-user {
+        margin-left: 110px;
+    }
+}
+
+
+/* -------  Small tablets to big tablets 768px to 1023px  -------*/
+@media only screen and (max-width: 1023px) {
+ 
+    .body { font-size: 13px; }
+    section { padding: 60px 0px; }
+    
+    .section-features h2 { font-size: 170%; }
+    
+    /* Total 100% made up of 90% plus 5% each side */
+    .section-features .long-copy p {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .section-features .img-big img {
+        width: 40%;
+    }
+    
+    .display-user {
+        margin-left: 110px;
+    }
+    
+    /* Taster Section */    
+    .taster-form {
+        width: 50%;
+    }    
+
+}
+
+
+/* -------  Small phones to small tablets 481px to 767px  -------*/
+@media only screen and (max-width: 767px) {
+    
+    .body { font-size: 10px; }
+    section { padding: 40px 0px; }
+    
+    .logo img {
+        width: 70px;
+    }
+    
+    .display-user {
+        font-size: 80%;
+        margin-left: 80px;
+    }
+    
+    .club-title {
+        position: relative;
+        min-width: 300px;
+        top: 30%;
+        left: 10%;
+    }
+    
+    .nextSession {
+        margin-top: 15px;
+        width: 200px;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+    
+    /* Stops the dropdown menu in mobile from developing a vertical scoll bar */
+    .navbar-collapse {
+        max-height: 700px;
+    }
+    
+    .navbar-toggle {
+        padding: 0 0;
+        /*width: 30px;
+        height: 30px;*/
+    }
+    
+    .navbar-toggle .icon-bar {
+        width: 30px;
+        height: 5px;
+        background: #5a5a5a;
+    }
+    
+    .navbar li,
+    .navbar li .dropdown li {
+        display: block;
+        margin-left: 0;     /* better mobile */
+        margin-right: 0;    /* better mobile */
+    }
+    
+    .navbarlight .dropdown-menu {
+        background: #000;
+        border-color: #fff;
+    }
+    
+    /* needed to keep the menu vertical aligning */
+    .dropdown-menu {
+        padding: 0;
+    }
+    
+    /* Main links */
+    .navbar .navbarlight li a:link,
+    .navbar .navbarlight li a:visited,
+    .navbar .navbarlight .dropdown li a:link,
+    .navbar .navbarlight .dropdown li a:visited{
+        background-color: #393939;
+    }
+    
+    /* Main links hover */
+    .navbar .navbarlight li a:hover,
+    .navbar .navbarlight li a:active,
+    .navbar .navbarlight .dropdown li a:hover,
+    .navbar .navbarlight .dropdown li a:active {
+        background-color: #7b7979;
+    }
+    
+    /* drop down menu link */
+    .navbar .navbarlight li.dropdown {
+        background-color: #393939;
+    }
+    
+    /* drop down menu link */
+    .navbar .navbarlight li.dropdown  {
+        background-color: #393939;
+    }
+   
+    .navbar li a:link,
+    .navbar li a:visited,
+    .navbar .dropdown a:link, 
+    .navbar .dropdown a:visited, 
+    .navbar .dropdown li a:link,
+    .navbar .dropdown li a:visited {
+        display: block;
+        padding: 10px 0;        /* better mobile */
+        padding-left: 10px;     /* better mobile */
+        font-size: 80%;
+        background-color: #e0e0e0;    /*c9c9c9 */
+        border-top: solid 1px #6a6868;
+    }
+    
+    /*.navbar li a:link:first-child {
+        border-top: solid 0px #6a6868;
+    }*/
+    
+    .navbar li a:hover,
+    .navbar li a:active,
+    .navbar .dropdown a:hover,
+    .navbar .dropdown a:active,
+    .navbar .dropdown li a:hover,
+    .navbar .dropdown li a:active {
+        border-bottom: transparent;
+        background-color: #f4f4f4; 
+    }
+
+    .navbar li.dropdown {
+        background-color: #e0e0e0;
+        border-top: solid 1px #6a6868;
+    }
+    
+    /* aligns the dropdown link menu item MEMBERS */
+    .navbar .dropdown a.anchor {
+        padding: 10px 0;
+        padding-left: 10px;
+    }
+    
+    .navbar .dropdown .dropdown-menu li a:link {
+        padding-left: 30px;  
+        
+    }
+    
+    .section-features h2 { font-size: 130%; }
+    
+    
+    .section-pent .box {
+        padding-bottom: 10px;
+        /*border: solid 1px yellow;*/
+    }
+    
+    .section-pent .img-big img,
+    .section-pent .img-big h3 {
+        width: 25%;
+    }
+    
+    .section-pent .img-big p {
+        padding-top: 10px;
+    }
+        
+    /* Coaching Section */
+    
+    .coaching .box {
+        padding-bottom: 30px; 
+        /*border: solid 1px blue;*/
+    }
+    
+    .coaching h2 {
+        padding-top: 20px;
+    }
+    
+    .coaching .box h3 {
+        clear: both;
+        text-align: left;
+        padding-left: 20px;
+    }
+    
+    .coaching .box .left-col {
+        float: left;
+    }
+    
+    
+    /* Taster Section */
+    
+    .taster-form {
+        width: 70%;
+    }
+    
+}
+
+
+/* -------  Small phones 0 to 480px -------*/
+@media only screen and (max-width: 480px) {
+   
+    .body { font-size: 7px; }
+    
+    .trainingPanel {
+        font-size: 70%;
+        padding: 10px;
+        min-width: 100px;
+    }
+    
+    .logo img {
+        width: 70px;
+    }
+    
+    .navbar-toggle .icon-bar {
+        width: 20px;
+        height: 3px;
+        background: #5a5a5a;
+    }
+    
+    .club-title {
+        position: relative;
+        min-width: 300px;
+        top: 30%;
+        left: 10%;
+    }
+    
+    .nextSession {
+        width: 200px;
+    }
+    
+    h1, h2 , h3 {
+       font-size: 150%;
+       font-weight: 300;
+    }
+
+    h2 {
+       font-size: 100%;
+    }
+
+    h3 {
+       font-size: 90%;
+    }
+    
+    .section-features .long-copy p {
+        text-align: left;
+    }
+    
+    .coaching .box {
+        padding-bottom: 10px; 
+    }
+    
+    .taster-form {
+        width: 80%;
+    }
+    
+    .footer-nav {
+        display: none;
+    }
+    
+    footer .box {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    
+    footer .box:last-child{
+        margin-top: 10px;
+    }
+}

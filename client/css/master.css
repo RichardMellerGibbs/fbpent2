@@ -1,0 +1,483 @@
+/* --------------------------------------------------------------*/
+/* BASIC SETUP */
+/* --------------------------------------------------------------*/
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato','Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/* --------------------------------------------------------------*/
+    
+/* Required to stop the scroll bars appearing */
+.row {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0px;
+}
+
+/* -------  Headings -------*/
+h1, h2 , h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 240%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 110%;
+}
+
+/* --------------------------------------------------------------*/
+/* HEADER */
+/* --------------------------------------------------------------*/
+
+/* -------  Background -------*/
+
+.homebg {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/shooting-min.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	margin: 0;
+}
+
+/* -------  General -------*/
+
+/* -------  Main Title -------*/
+.club-title {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    /*transform: translate(-50%, -50%);*/
+}
+
+/* -------  Navigation -------*/
+
+.logo img {
+    padding-top: 15px;
+    /*width: 10%;*/
+    width: 110px;
+    position:absolute;
+    min-width: 80px;
+}
+
+.display-user {
+    padding-top: 28px;
+    /*padding-left: 130px;*/
+    margin-left: 120px;
+    position:absolute;
+    color: #000;
+}
+
+.nextSession {
+    padding-top: 28px; 
+    padding-left: 20px;
+    position:absolute;
+    float: left;
+    color: #fff;
+    font-size: 80%;
+}
+
+.nextSession a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.trainingPanel.showTraining {
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+.trainingPanel.hideTraining {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.trainingPanel {
+    margin-top: 10px;
+    border: solid 1px #fff;
+    padding: 15px;
+    min-width: 200px;
+}
+
+.trainingPanel .event,
+span.nextAvailableFriday {
+    padding-left:20px;
+}
+
+.trainingPanel .event {
+    background-color: transparent;
+}
+
+
+.eventResult {
+    padding-left:10px;
+}
+
+
+.trainingPanel .event .fencing {
+    margin-bottom: 10px;
+}
+
+.nextAvailableFriday {
+    padding-top: 10px;
+    
+}
+
+
+/* --------------------------------------------------------------*/
+/* NAVBAR */
+/* --------------------------------------------------------------*/
+
+
+.navbar {
+    float: right;
+    list-style: none;
+    padding-top: 20px;
+}
+
+.icon-bar {
+    border: solid 1px #000;
+}
+
+.navbarlight .icon-bar {
+    border: solid 1px #fff;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+.dropdown-menu {    
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.navbar .dropdown-menu li {
+    display: block;
+}
+
+.navbar .dropdown .dropdown-menu li a:link {
+    font-size: 105%;
+    font-weight: 300;
+}
+
+.navbar li a:link, 
+.navbar li a:visited,
+.navbar .dropdown a:link, 
+.navbar .dropdown a:visited, 
+.navbar .dropdown li a:link,
+.navbar .dropdown li a:visited
+{
+    padding: 8px 0px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 80%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+    background-color: transparent;
+}
+
+.navbar li a:hover, 
+.navbar li a:active,
+.navbar .dropdown a:hover,
+.navbar .dropdown a:active,
+.navbar .dropdown li a:hover, 
+.navbar .dropdown li a:active {
+    background-color: transparent;
+    border-bottom: 2px solid #c33636;
+}
+
+.navbar .dropdown a {
+    padding: 8px 0px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 80%;    
+    background-color: transparent;
+}
+
+.navbarlight .dropdown a {
+    color: #fff;    
+    background-color: transparent;
+}
+
+.navbarlight .dropdown-menu {    
+    background-color: transparent;
+    border-color: #fff;
+}
+
+
+/* -------  White Nav links -------*/
+.navbarlight li a:link, 
+.navbarlight li a:visited,
+.navbarlight .dropdown a:link,
+.navbarlight .dropdown a:visited,
+.navbarlight .dropdown li a:link, 
+.navbarlight .dropdown li a:visited,
+.navbarlight .dropdown-menu {
+    color: #fff;    
+    background-color: transparent;
+}
+ 
+
+/* --------------------------------------------------------------*/
+/* SECTION GENERIC */
+/* --------------------------------------------------------------*/
+
+section,
+section h2,
+section h3 {
+    clear: both;
+    color: #000;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section h2:after {
+    display: block;
+    height: 2px;
+    background-color: #c33636;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* ------- Paragraphs -------*/
+
+section .long-copy p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section .box p {
+    font-size: 90%;
+    /*border: solid 1px green;*/
+}
+
+/* ------- Images -------*/
+
+section .img-big img {
+    margin-bottom: 10px;
+    width: 50%;
+    vertical-align: baseline;
+    display: block;
+    /*border: solid 1px green;*/
+}
+
+/* --------------------------------------------------------------*/
+/* 5 SPORT SECTION */
+/* --------------------------------------------------------------*/
+
+
+/* --------------------------------------------------------------*/
+/* WEEKLY TRAINING SECTION */
+/* --------------------------------------------------------------*/
+
+.section-weekly-train {
+    background-color: #f4f4f4;
+    font-weight: 350;
+}
+
+.section-weekly-train .box {
+    padding: 0px 30px;
+}
+
+.section-weekly-train .box h3 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.section-weekly-train .box img {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* --------------------------------------------------------------*/
+/* COACHING SECTION */
+/* --------------------------------------------------------------*/
+
+.coaching h3 {
+    padding-bottom: 10px;
+}
+
+.coaching .box img {
+    width: 100%;
+    padding-right: 10px;
+}
+
+.coaching .box p {
+    padding-bottom: 20px;
+}
+
+
+
+/* --------------------------------------------------------------*/
+/* TASTER SECTION */
+/* --------------------------------------------------------------*/
+
+.taster-intro {
+    text-align: center;
+    /*margin: 0px auto;*/
+    /*border: solid 1px red;*/
+}
+
+.taster-form {
+    width: 35%;
+    margin: 20px auto;
+    /*border: solid 1px red;*/
+}
+
+.taster-form .input-group {
+    width: 100%;
+    /*border: solid 1px green;*/
+}
+
+
+
+/* --------------------------------------------------------------*/
+/* FOOTER SECTION */
+/* --------------------------------------------------------------*/
+footer {
+    background-color: #333;
+    color: #888;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+footer .box {
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+.externalLinks ul {
+    padding-left: 0;
+}
+
+.social-nav {
+    list-style: none;
+}
+
+.social-nav li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.social-nav li a:link {
+    font-size: 180%;
+}
+
+.ion-social-facebook {
+    color: #3b5998;
+}
+
+.ion-social-twitter {
+    color: #00aced;
+}
+.social-nav li.imageLink img {
+    width: 50%; 
+}
+
+.social-nav li i {
+    width: 150%;
+}
+
+.social-nav li:last-child {
+    margin-right: 0px;
+}
+
+.footer-nav {
+    list-style: none;
+    float: right;
+    margin-right: 30px;
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child {
+    margin-right: 0px;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited {
+    text-decoration: none;
+    color: #888;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+footer .design {
+    margin-top: 20px;
+    color: #888;
+    font-size: 85%;
+    /*text-align: center;*/
+    padding-bottom: 20px;
+    /*margin-left: 153px;*/
+}
+
+footer .design a:hover,
+footer .design a:active {
+    color: #ddd;
+}
+
+
+/* other */
+
+
+.contact_right {
+	border-style: 1px solid;
+	padding-top: 100px;
+}
+
+/* Input field background. Light grey with no border */
+.bg-grey {
+	background-color: #F9F9F9;
+	border-style: none;
+}
+
+/* Horse sillouette. Get in touch */
+.horse-sil {
+    padding-top: 50px;
+}
+
+/* Nice and small text eg. get in touch -> required */
+.discrete {
+    font-size: 80%;
+}
+
+/* Address section of the get in touch page */
+.address {
+	padding-top: 50px;
+}
+

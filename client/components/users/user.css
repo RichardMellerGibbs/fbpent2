@@ -1,0 +1,51 @@
+.allusers {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+section.section-users {
+    padding: 40px 0px;
+}
+
+/* --------------------------------------------------------------*/
+/* SEARCH PANEL */
+/* --------------------------------------------------------------*/
+
+.searchPanel { 
+    width: 30%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.searchForm {
+    margin-bottom: 30px;
+}
+
+.memberCount {
+    font-size: 90%;
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+
+/* --------------------------------------------------------------*/
+/* TABLE OF MEMBERS */
+/* --------------------------------------------------------------*/
+
+.usersPanel {      
+    width: 80%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.table-responsive {  
+    /* limit the size of the table and add scrollbars */
+    font-size: 90%;
+    height:500px;
+    overflow:scroll;
+}
+
+.table-responsive tbody tr {
+    background-color: #fff;     /* row background white */
+    cursor: pointer;            /* gives the row a pointer */
+}

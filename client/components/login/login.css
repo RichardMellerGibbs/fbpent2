@@ -1,0 +1,93 @@
+/* ANIMATIONS
+ ====================== */
+.spinner {
+    animation:spin 1s infinite;
+    -webkit-animation:spin 1s infinite;
+    -moz-animation:spin 1s infinite;
+    }
+
+@keyframes spin {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform:rotate(0deg); }
+    to { -webkit-transform:rotate(360deg); }
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform:rotate(0deg); }
+    to { -moz-transform:rotate(360deg); }
+}
+
+
+
+/* --------------------------------------------------------------*/
+/* LOGIN SECTION */
+/* --------------------------------------------------------------*/
+
+
+
+/*.section-login .jumbotron {
+    margin: 200px auto;
+    width: 30%;
+    border: solid 1px #333333;    
+}*/
+
+/*.section-login h2 {
+    text-transform: capitalize;
+    margin: 0px auto;
+    padding-bottom: 20px;
+    color: #000;  
+    
+}*/
+
+/*.login-form {
+    width: 90%;
+    margin: 0px auto;
+    }*/
+
+.login {
+	background-color: #f4f4f4;
+    min-height: 760px;
+}
+
+.section-login {
+    padding-top: 0px;
+}
+
+.login-panel {
+    width: 40%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.login-form {
+    background-color: #fff;
+    margin: 20px 10px;
+    padding: 20px;
+    border: solid 1px #a6a6aa;
+}
+
+.login-form .input-group {
+    width: 100%;
+    padding-bottom: 20px;
+    
+}
+
+
+.login-form .input-group .field-title {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.input-group .form-field {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+.form-control:focus {
+    border-color: #c33636;
+    box-shadow: none;
+}

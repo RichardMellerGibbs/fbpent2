@@ -1,0 +1,84 @@
+/* EVENT Styling */
+
+.events {
+	background-color: #f4f4f4;
+    min-height: 760px;              /* Forces footer to the bottom of the page */
+}
+
+.eventPanel { 
+    width: 60%;
+    margin: 0 auto;
+    min-width: 290px;
+}
+
+.eventList {
+    list-style: none;
+    /*max-height: 700px;
+    /* adds scroll bars */
+    /*overflow-y:scroll; */
+    /*border: solid 1px blue;*/
+}
+
+.eventList li {
+    margin-bottom: 40px;
+    font-size: 80%;
+    font-weight: 300;
+    background-color: #fff;
+    border: solid 1px #000;
+}
+
+/* Adds pointer when user is admin */
+.showHover.eventList li { 
+    cursor: pointer; 
+    cursor: hand; 
+}
+
+/* Returns the pointer to the default when user is not admin */
+.hideHover.eventList li { 
+    cursor: default; 
+    cursor: default; 
+}
+
+.eventHeaderRow {
+    /*border: solid 1px blue;*/
+    margin: 10px 0;
+}
+
+.eventHeaderCol {
+    /*border: solid 1px green;*/
+}
+
+.eventDate {
+    text-decoration: underline;
+    margin-right: 40px;
+    float: left;
+}
+
+.eventTitle {
+    
+}
+
+.eventDescCol {
+    /*border: solid 1px green;*/
+}
+
+.eventDesc {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.eventImageCol {
+    /*border: solid 1px brown;*/
+}
+
+.eventImageCol .eventImg {
+    margin: 10px auto;
+    /*border: solid 1px black;*/
+}
+
+.eventImg img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 15px;
+    /*border: solid 1px blue;*/
+}

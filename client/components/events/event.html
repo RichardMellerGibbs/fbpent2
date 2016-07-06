@@ -1,0 +1,52 @@
+<div class="events">
+    <div class="container-fluid">
+        <section class="eventSection">
+
+            <div class="row">
+                <h2>News and Events</h2>
+            </div>
+            
+            <div class="row" ng-if="event.me.admin">
+                <button type="submit" ng-click="event.addEvent()" class="btn btn-block btn-primary add-btn">Add Event</button>
+            </div>
+            
+            <div class="row">
+
+                <div class="eventPanel">
+                    <div class="col">
+                        
+                        <ul class="eventList" ng-class="{'showHover': event.me.admin, 'hideHover': !event.me.admin}">
+                            <li ng-repeat="evnt in event.events" ng-click="event.eventDetail(evnt)">
+                                
+                                <div class="row eventHeaderRow">
+                                    <div class="col-md-12 eventHeaderCol">
+                                        <div class="eventDate">
+                                            {{ evnt.eventDate | amDateFormat: 'dddd, Do MMMM YYYY' }}
+                                        </div>
+                                        <div class="eventTitle">
+                                            {{ evnt.title }}        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 eventDescCol">
+                                        <div class="eventDesc">
+                                            {{ evnt.description }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 eventImageCol">
+                                        <div class="eventImg">
+                                            <!--img src="../images/club_run.jpg"/-->
+                                            <img ng-src="{{evnt.picture | fpConvert: {filter:'sharpen'} }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
