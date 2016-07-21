@@ -21,5 +21,37 @@ angular.module('tasterCtrl', ['tasterService', 'userService','authService'])
 
         // bind the sessions that come back to vm.sessions
         vm.tasters = data;
-    });    
+    });
+
+
+    // DELETE A SESSION
+    vm.deleteSession = function(tasterId) {
+        
+        // clear the error
+        vm.error = '';
+
+        //console.log('delete taster session called in taster controller ' + tasterId );
+        
+        Taster.delete(tasterId)
+        .success(function() {
+
+            //console.log('Success from Taster.delete');
+            
+            Taster.all()
+            .success(function(data) {
+
+                //console.log('Success from Taster.all');
+                
+                vm.tasters = data;
+            })
+            .error(function() {
+                //console.log('Failure from Taster.all');
+            }); 
+            
+        })
+        .error(function() {
+            //console.log('Failure from Taster.delete');
+        });
+    }
+
 }]);

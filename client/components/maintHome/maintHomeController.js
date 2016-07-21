@@ -89,6 +89,12 @@ angular.module('maintHomeCtrl', ['userService','authService','homeService'])
                 vm.selectedItem.title = '';
                 vm.selectedItem.description = '';
                 vm.repeatSelect = '';
+
+                //Makes feedback alert dissapear automatically after 4 seconds
+                setTimeout(function () {
+                    $('.alert').alert('close')
+                }, 3000);
+
                 //$location.path('/home');
                 // grab all the home data at page load
                 Home.all()

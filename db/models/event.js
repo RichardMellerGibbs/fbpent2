@@ -8,6 +8,8 @@ var EventSchema = new Schema({
 	eventDate: {type: Date, required: true},
 	title: String,
     description: String,
+    eventUrl: String,
+    eventUrlDescription: String,
     picture: {type: Schema.Types.Mixed},
     createdAt: {type: Date, default: Date.now}
 });

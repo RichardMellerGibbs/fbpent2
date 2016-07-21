@@ -10,6 +10,7 @@ var logger      = require('../utils/logger.js');
 var config      = require('../config');
 var sendGridApi = config.sendGridApi;
 var sendgrid    = require('sendgrid')(sendGridApi);
+                require('datejs');
 
 var env = config.node_env;
 
@@ -69,9 +70,24 @@ router.post('/',function(req, res) {
             } else {
 
                 logger.info('pauls email is %s',user.username);    
+                var emailText = 'A taster booking has been made by ' + req.body.name;
+
+                if (req.body.childName) {
+                    emailText = emailText + '. Child name ' + req.body.childName;
+                }
+
+                var sessionDate = new Date(req.body.sessionDate);
+                emailText = emailText + '. Session booked on ' + sessionDate.toString('d MMM yyyy');
+
+                if (req.body.medical) {
+                    emailText = emailText + '. Medical condition specified ' + req.body.medical;    
+                } else {
+                    emailText = emailText + '. No medical condition specified';
+                }
                 
                 if (env == 'development') {
                     logger.info('Dev mode. Not really sending an email');    
+                    logger.info('emailText = %s',emailText);
                     return res.json({ success: true, message: 'Taster created and pretend email sent'});
                 }
                 
@@ -79,7 +95,7 @@ router.post('/',function(req, res) {
                 var email     = new sendgrid.Email(); 
                 email.from      = user.username;
                 email.subject   = 'Pentathlon Taster Booking';
-                email.text      = 'A taster booking has been amde by ' + req.body.name;
+                email.text      = emailText;
                 email.addTo(user.username);
 
                 sendgrid.send(email, function(err, json) {

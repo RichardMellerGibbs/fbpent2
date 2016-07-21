@@ -1,6 +1,6 @@
 // EVENT CONTROLLER
 angular.module('eventCtrl', ['eventService', 'userService','authService'])
-.controller('eventController', ['$location', 'User', 'Auth', 'Event', function($location, User, Auth, Event) {
+.controller('eventController', ['$location', '$sce', 'User', 'Auth', 'Event', function($location, $sce, User, Auth, Event) {
 
 
     var vm = this;
@@ -34,9 +34,72 @@ angular.module('eventCtrl', ['eventService', 'userService','authService'])
         .success(function(data) {
 
             //console.log('eventController - success from Event.all');
+            //console.log('data length ' + data.length);
+
+            //Loop through the event descriptions
+            for (var i = 0; i < data.length; i++) {
+                
+                
+                    
+                    /*console.log('event iteration ' + i + ' text ' + data[i].description); 
+
+                    var startPos = data[i].description.indexOf("<p_urlLink>");
+                    var initialText = data[i].description.substring(0, startPos);
+
+                    var endPos = data[i].description.indexOf("</p_urlDescription>"); 
+                    endPos+=19;
+                    var finalText = data[i].description.substring(endPos);
+
+                    //Cut out link section
+                    var linkText = data[i].description.substring(startPos, endPos);
+
+                    console.log('initialText = *' + initialText + '*');
+                    console.log('finalText = *' + finalText + '*');
+                    console.log('linkText = *' + linkText + '*');
+                    
+
+                    var replacedUserText1 = linkText.replace('<p_urlLink>', "<a href='");
+                    var replacedUserText2 = replacedUserText1.replace('</p_urlLink>', "'>");
+                    var replacedUserText3 = replacedUserText2.replace('<p_urlDescription>', '');
+                    var replacedUserText4 = replacedUserText3.replace('</p_urlDescription>', '</a>');
+
+                    console.log('new ' + replacedUserText4);
+                    data[i].description = $sce.trustAsHtml("<span ng-bind-html = " + replacedUserText4 + "></span>");
+                    //<span ng-bind-html = <a href='www.bbc.co.uk'>Twitter</a>></span>
+                    //<span ng-bind-html = "event.mylink"></span>
+                    //vm.mylink = $sce.trustAsHtml(replacedUserText4);
+                    */
+
+                    //Make sure the URL starts with http://
+                    var urLlText = data[i].eventUrl;
+                    //console.log('urLlText ' + urLlText);
+                    var urlStart = '';
+
+                    if (urLlText != undefined) {
+                        urlStart = urLlText.substring(0, 3);    
+                        //console.log('urlStart ' + urlStart);
+                    }
+
+                    var urlValue = '';
+
+                    if (urlStart == 'www') {
+                        urlValue = 'http://' + data[i].eventUrl;
+                    } else {
+                        urlValue = data[i].eventUrl;
+                    }
+
+                    //Prepare the url string
+                    var linkText = "<a href=" + urlValue + ">" + data[i].eventUrlDescription + "</a>";
+                    //console.log('linkText ' + linkText);
+
+                    //Mark the string as guaranteed html for angular
+                    data[i].urlLink = $sce.trustAsHtml(linkText);
+                    //vm.urlLink = $sce.trustAsHtml(linkText);
+            }
 
             // bind the sessions that come back to vm.sessions
             vm.events = data;
+            //vm.mylink = $sce.trustAsHtml("<a href='http://twitter.com'>Twitter</a>");
         });
     }
     

@@ -65,7 +65,7 @@ angular.module('sessionService', [])
     };
     
     
-    // update a user
+    // update the session
     sessionFactory.update = function(id, sessionData) {
         return $http.put('/api/sessions/' + id, sessionData);
     };

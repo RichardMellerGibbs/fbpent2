@@ -28,13 +28,13 @@
 }
 
 /* Adds pointer when user is admin */
-.showHover.eventList li { 
+.showHover.eventList .eventDate { 
     cursor: pointer; 
     cursor: hand; 
 }
 
 /* Returns the pointer to the default when user is not admin */
-.hideHover.eventList li { 
+.hideHover.eventList .eventDate { 
     cursor: default; 
     cursor: default; 
 }

@@ -169,12 +169,26 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
             if (data.success === true) {
                 //console.log('homeController - success from tasterService.create');
                 vm.feedback = 'Thank you';
+                vm.name = '';
+                vm.sessionDate = '';
+                vm.medical = '';
+                vm.childName = '';
+                vm.email = '';
+
+                //Makes feedback alert dissapear automatically after 4 seconds
+                setTimeout(function () {
+                    $('.alert').alert('close')
+                }, 4000);
+
             } else {
                 vm.error = data.message;
             }
 
         }); 
     }
+
+    
+
     
 }]);
 

@@ -74,11 +74,18 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
             vm.error = 'A event description must be supplied';
             return;        
         }
+
+        if (!vm.event.eventUrl && vm.event.EventUrlDescription) {
+            vm.error = 'A event URL must be supplied if a URL description is present';
+            return;        
+        }
         
         var eventData = {
             eventDate: vm.eventDate.value,
             title: vm.event.title,
-            description: vm.event.description
+            description: vm.event.description,
+            eventUrl: vm.event.eventUrl,
+            eventUrlDescription: vm.event.EventUrlDescription
         };
         
         if (vm.event.picture) {
@@ -101,6 +108,25 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
         });
     }
     
+    //Add the tags to a URL to make it clickable
+    /*vm.addLink = function() {
+    
+        var input = document.getElementsByTagName('textarea')[0];
+        var selectedText = input.value.substring(input.selectionStart, input.selectionEnd);
+
+        var urlDesc = 'Twitter';
+        var urlLink = '<p_urlLink>' + selectedText + '</p_urlLink><p_urlDescription>' + urlDesc + '</p_urlDescription>'; 
+
+        console.log('selectedText = ' + selectedText);
+        console.log('urlLink ' + urlLink);
+
+        //Put the new link text back into the textarea
+        var userText = vm.event.description;
+        var replacedUserText = userText.replace(selectedText, urlLink);
+        console.log('userText ' + replacedUserText);
+
+        vm.event.description = replacedUserText;
+    }*/
     
     vm.updateEvent = function() {
         
@@ -112,6 +138,7 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
         //console.log('eventDate ' + vm.eventDate.value);
         //console.log('title ' + vm.event.title);
         //console.log('description ' + vm.event.description);
+        //console.log('eventUrlDescription ' + vm.event.eventUrlDescription);
         
         //VALIDATE FORM
         //eventDate must have a value
@@ -129,11 +156,20 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
             vm.error = 'A event description must be supplied';
             return;        
         }
+
+        if (!vm.event.eventUrl) { 
+            if (vm.event.eventUrlDescription) {
+                vm.error = 'A event URL must be supplied if a URL description is present';
+                return;
+            }        
+        }
         
         var eventData = {
             eventDate: vm.eventDate.value,
             title: vm.event.title,
-            description: vm.event.description
+            description: vm.event.description,
+            eventUrl: vm.event.eventUrl,
+            eventUrlDescription: vm.event.eventUrlDescription
         };
         
         if (vm.event.picture) {

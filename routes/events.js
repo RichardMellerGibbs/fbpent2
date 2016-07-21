@@ -30,6 +30,7 @@ router.get('/', authMiddle.isAuthenticated, function(req, res) {
 });
 
 
+//Get a specific event entry (accessed at GET http://localhost:8082/api/events/:event_id)
 router.get('/:event_id', authMiddle.isAuthenticated, function(req, res) {
 
     logger.info('Processing request to get a single event specified by id %s', req.params.event_id);
@@ -58,7 +59,7 @@ router.get('/:event_id', authMiddle.isAuthenticated, function(req, res) {
 });
 
 
-//Adding a session entry (accessed at POST http://localhost:8082/api/events)
+//Adding a event entry (accessed at POST http://localhost:8082/api/events)
 router.post('/',authMiddle.isAuthenticated, function(req, res) {
   
     logger.info('Received a request to add a event');
@@ -75,14 +76,30 @@ router.post('/',authMiddle.isAuthenticated, function(req, res) {
     if (!req.body.description) {
         return res.json({ success: false, message: 'No description specified'});
     }
-    
+
+    if (req.body.eventUrlDescription) {
+        if (!req.body.eventUrl) {
+            return res.json({ success: false, message: 'An eventUrl must be specified if a URL description is present'});
+        }    
+    }
+
     
     var event = new models.Event();      // create a new instance of the Event model
     event.eventDate = new Date(req.body.eventDate).toISOString(),
     event.title = req.body.title;  
-    event.description = req.body.description;  
-    //event.image.data = req.body.image;  
-    
+    event.description = req.body.description;   
+
+    //Only populate the Event schema wi the url if one is specified 
+    if (req.body.eventUrl) {
+        if (req.body.eventUrlDescription) {
+            event.eventUrlDescription = req.body.eventUrlDescription;
+        } else {
+            event.eventUrlDescription = req.body.eventUrl;
+        }
+
+        event.eventUrl = req.body.eventUrl;
+    }
+
     if (req.body.picture){
         event.picture = req.body.picture;
     }
@@ -123,6 +140,25 @@ router.put('/:event_id', authMiddle.isAuthenticated,  function(req, res) {
  
     logger.info('Processing request to update a single event specified by id %s', req.params.event_id);
 
+    //VALIDATION
+    if (!req.body.eventDate) {
+        return res.json({ success: false, message: 'No eventDate specified'});
+    }
+    
+    if (!req.body.title) {
+        return res.json({ success: false, message: 'No title specified'});
+    }
+    
+    if (!req.body.description) {
+        return res.json({ success: false, message: 'No description specified'});
+    }
+
+    if (req.body.eventUrlDescription) {
+        if (!req.body.eventUrl) {
+            return res.json({ success: false, message: 'No eventUrl specified'});
+        }    
+    }
+
     models.Event.findById(req.params.event_id , function(err, event) {
 
         if (err) {
@@ -147,6 +183,23 @@ router.put('/:event_id', authMiddle.isAuthenticated,  function(req, res) {
             logger.info('description is populated');
             event.description = req.body.description;
         }
+
+        logger.info('req.body.eventUrl %s',req.body.eventUrl);
+        logger.info('req.body.eventUrlDescription %s',req.body.eventUrlDescription);
+        //Only populate the Event schema wi the url if one is specified 
+        if (req.body.eventUrl) {
+            
+            if (req.body.eventUrlDescription) {
+                event.eventUrlDescription = req.body.eventUrlDescription;
+            } else {
+                event.eventUrlDescription = req.body.eventUrl;
+            }
+
+            event.eventUrl = req.body.eventUrl;
+        }
+
+        logger.info('Schema eventUrl %s',event.eventUrl);
+        logger.info('Schema eventUrlDescription %s',event.eventUrlDescription);
         
         if (req.body.picture){
             logger.info('picture is populated %s', req.body.picture);

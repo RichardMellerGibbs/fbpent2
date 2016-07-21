@@ -27,11 +27,19 @@
                             
                             <div class="input-group eventDescription">
                                 <div class="field-title">Description</div>
+                                <!--div><button type="button" class="btn btn-default" ng-click="maintEvent.addLink()">Add Link</button></div-->
                                 <textarea type="text" name="eventDescription" ng-model="maintEvent.event.description" autofocus class="form-control bg-white">
                                 </textarea>
                             </div>
                            
-                            
+                            <div class="input-group">
+                                <div class="field-title">URL</div>
+                                <input type="text" name="eventUrl" ng-model="maintEvent.event.eventUrl" autofocus class="form-control bg-white">
+                            </div>
+                            <div class="input-group">
+                                <div class="field-title">URL Description</div>
+                                <input type="text" name="eventUrlDescription" ng-model="maintEvent.event.eventUrlDescription" autofocus class="form-control bg-white">
+                            </div>
                             
                             
                             <div class="alert alert-danger fade in validationPanel" ng-if="maintEvent.error">

@@ -158,7 +158,7 @@ router.get('/', authMiddle.isAuthenticated, function(req, res) {
     });
 });
 
-
+// get a single session (accessed at GET http://localhost:8082/api/sessions/:session_id)
 router.get('/:session_id', authMiddle.isAuthenticated, function(req, res) {
 
     logger.info('Processing request to get a single session specified by id %s',req.params.session_id);

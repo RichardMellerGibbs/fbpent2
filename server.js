@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var port = config.port;
 
-console.log('env is %s' + config.node_env);
+console.log('env is ' + config.node_env);
 
 //Expose the client statuc files. This includes index.html landing page which gets everything going
 app.use(express.static(__dirname + '/client'));
