@@ -63,6 +63,7 @@ router.get('/next', function(req, res) {
                 nextAvailableFriday = nextFriday;
 
             } else {
+                logger.info('Advance to next friday');
                 //Advance to next friday
                 Date.parse(nextFriday).next().friday();
                 nextAvailableFriday = nextFriday;
@@ -76,7 +77,7 @@ router.get('/next', function(req, res) {
 
             logger.info('Just calculated next friday to be %s', nextAvailableFriday);
 
-            //console.log('back from iso to local ' + new Date(nextAvailableFriday.toISOString()));
+            logger.info('back from iso to local %s', new Date(nextAvailableFriday.toISOString()));
             sessionFree = true;
 
 
@@ -91,6 +92,8 @@ router.get('/next', function(req, res) {
 
                     if (session[i].sessionDate.toISOString() === nextAvailableFriday.toISOString()) { 
                         
+                        logger.info('session %d %s is next friday', i, session[i].sessionDate.toISOString());
+
                         //If next friday if found in the db then collect the settings
                         if (fridayCount === 1) {
                             logger.info('Collecting seettings for next friday');

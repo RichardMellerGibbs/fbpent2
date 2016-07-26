@@ -79,11 +79,11 @@ angular.module('mainCtrl', ['sessionService','authService'])
         
         if (vm.path == '/home' || vm.path == '/') {
             vm.navlight = true;
-            vm.nextSessionMessage = sessionMessage.nextSessionMessage;
+            //vm.nextSessionMessage = sessionMessage.nextSessionMessage;
         }
         else {
             vm.navlight = false;
-            vm.nextSessionMessage = '';
+            //vm.nextSessionMessage = '';
         }
         
         
@@ -114,10 +114,8 @@ angular.module('mainCtrl', ['sessionService','authService'])
         //Turn off the panel
         vm.showTrainingSection = false;
         
-        sessionMessage = Session.getMessage();
-
+        //sessionMessage = Session.getMessage();
         //console.log('SessionMessage.nextSessionMessage empty ' + sessionMessage.nextSessionMessage);
-
         //console.log('Calling Session.getNext');
 
         Session.getNext()
@@ -160,12 +158,13 @@ angular.module('mainCtrl', ['sessionService','authService'])
                 vm.nextAvailableDate = '';
             }
 
-           // console.log('The next session is ' + data.nextActualFriday);
-            //console.log('Running is ' + vm.nextFridayRunning.value);
-            //console.log('Shooting is ' + vm.nextFridayShooting.value);
-            //console.log('Fencing is ' + vm.nextFridayFencing.value);
-            //console.log('If canned. ' + vm.nextAvailableSession);
-            //console.log(data.nextAvailableFriday);
+            /*console.log('The next session is ' + data.nextActualFriday);
+            console.log('Running is ' + vm.nextFridayRunning.value);
+            console.log('Shooting is ' + vm.nextFridayShooting.value);
+            console.log('Fencing is ' + vm.nextFridayFencing.value);
+            console.log('If canned. ' + vm.nextAvailableSession);
+            console.log(data.nextAvailableFriday);
+            */
         });
     }
     
