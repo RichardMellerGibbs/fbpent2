@@ -59,13 +59,13 @@ angular.module('mainCtrl', ['sessionService','authService'])
         
         vm.loggedIn = Auth.isLoggedIn();
         
-        //console.log('Route changed. location = |' + $location.path() + '|');
+//console.log('Route changed. location = |' + $location.path() + '|');
         
         // The path is used to control the css class to make the menu text white in color.
         // So if it's /home or / then set it to true. The ngclass in index.html uses this true/false
         // to add a class or not. If true then it adds the class. The class navbarlight sets the text to white
         vm.path = $location.path();
-        
+//console.log('vm.path = ' + vm.path);        
         if (vm.path === '') {
             return;
         }
@@ -142,6 +142,7 @@ angular.module('mainCtrl', ['sessionService','authService'])
                 vm.nextFridayFencing = {value: data.fencing};
             } 
 
+//console.log('nextAvailableFriday ' + data.nextAvailableFriday);
             var nextActualFriday = new Date(data.nextActualFriday).toISOString();
             var nextAvailableFriday = new Date(data.nextAvailableFriday).toISOString();
 

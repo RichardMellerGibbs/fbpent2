@@ -16,6 +16,7 @@
     "datejs": "0.0.2",
     "express": "^4.13.3",
     "jsonwebtoken": "^5.5.4",
+    "moment": "^2.14.1",
     "mongoose": "^4.2.3",
     "sendgrid": "^2.0.0",
     "winston": "^2.2.0"

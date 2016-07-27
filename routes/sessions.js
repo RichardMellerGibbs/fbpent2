@@ -9,11 +9,151 @@ var config     = require('../config');
 var authMiddle = require('../middleware/authenticate.js');
 var responses  = require('../middleware/responses.js');
 var logger      = require('../utils/logger.js');
-        require('datejs');
+var moment      = require('moment');
+//        require('datejs');
 
 var superSecret = config.secret;
 
 
+// get the next session (accessed at GET http://localhost:8082/api/sessions/next)
+router.get('/next', function(req, res) {
+
+    logger.info('Processing api request to get the next session');
+	
+    //Will get only the row we want based on the date
+    //models.Session.find({ sessionDate: todayNoTime }, function(err, session) {
+    var todayWithTime = new Date();
+    var today = new Date(todayWithTime.getFullYear(), todayWithTime.getMonth(), todayWithTime.getDate()).toISOString();
+
+    //Find all stored sessions greater than or equal to today
+    models.Session.find()
+      //.where('cancelled').equals(true)
+      .where('sessionDate').gte(today)
+      .exec(function(err,session) {
+        
+        if (err) {
+            logger.error('Error next sessions');
+
+            responses.handleError(err,req,res);   
+            return res.json({ success: false, message: 'Internal server error'});
+        }
+        
+        var sessionFree = false;
+        var nextFriday = new Date.today();
+        var nextAvailableFriday;
+        var fridayCount = 0;
+        var sessionData = new Object();
+
+        sessionData.nextActualFridayCancelled = false;
+        sessionData.running = false;
+        sessionData.shooting = false;
+        sessionData.fencing = false;
+
+        //Set to Friday as a search filter
+        var weekDayToFind = moment().day('Friday').weekday();
+                
+        logger.info('Starting to calculate the next free Friday');
+
+        nextAvailableFriday = moment(nextFriday);
+
+//**************************** TEST ************************************/
+//while (nextAvailableFriday.weekday() !== weekDayToFind){ 
+//    nextAvailableFriday.add(1, 'day'); 
+//}
+//nextAvailableFriday.add(1, 'day'); 
+//**************************** TEST ************************************/
+
+
+        //Loop until you can find a non cancelled future Friday including today if today is Friday
+        do {
+            fridayCount = fridayCount + 1;
+
+            //Dont advance to next friday if today is friday.
+            if ((fridayCount === 1) && (nextAvailableFriday.weekday() === weekDayToFind)) {
+
+                logger.info('today is already friday so dont advance to next week');
+
+            } else {
+                logger.info('Advance to next friday');
+                //Advance to next friday
+                nextAvailableFriday.add(1, 'day'); 
+                while (nextAvailableFriday.weekday() !== weekDayToFind){ 
+                    nextAvailableFriday.add(1, 'day'); 
+                }
+
+                logger.info('Moment Just calculated next avail friday to be %s', nextAvailableFriday.format("YYYY-MM-DD HH:mm"));
+            }
+
+            //Record this fridays date if it has been cancelled. This is then returned in the reponse for consumption 
+            //in the client
+            if (fridayCount === 1) {
+                var nFriday = new Date(nextAvailableFriday);
+                sessionData.nextActualFriday = nFriday.toDateString();
+                logger.info('sessionData.nextActualFriday %s', sessionData.nextActualFriday);
+            }
+
+            sessionFree = true;
+            //logger.info('next fri is %s', moment(nextAvailableFriday).format("YYYY-MM-DD HH:mm"));
+
+            if (session != undefined) {
+                
+                logger.info('Number of stored sessions %s', session.length);
+                
+                for (var i = 0; i < session.length; i++) {
+
+                    //logger.info('date valid %s', moment(storedDate).isValid());
+                    var storedDate = moment(session[i].sessionDate);
+                    logger.info('session %d storedDate %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
+
+                    //Is next Fri the same date as the one found in the database
+                    var sameDate = moment(storedDate).isSame(nextAvailableFriday);
+
+                    if (sameDate) {
+                        
+                        logger.info('session %d is next friday  %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
+
+                        //If next friday if found in the db then collect the settings
+                        if (fridayCount === 1) {
+                            logger.info('Collecting seettings for next friday');
+                            sessionData.running = session[i].running;
+                            sessionData.shooting = session[i].shooting;
+                            sessionData.fencing = session[i].fencing;        
+                        }
+                        
+                        if (session[i].running === true && session[i].shooting === true && session[i].fencing === true) {
+
+                            sessionFree = false;  
+                            logger.info('That session is cancelled');
+
+                            if (fridayCount === 1) {
+                                sessionData.nextActualFridayCancelled = true;
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                logger.info('No cancelled sessions found');
+            }
+        }
+        while (sessionFree == false);
+
+        var nAvaiFriday = new Date(nextAvailableFriday);
+        sessionData.nextAvailableFriday = nAvaiFriday.toDateString();
+        
+        logger.info('nextActualFriday %s', sessionData.nextActualFriday);
+        //logger.info('nextAvailableFriday %s', nextAvailableFriday.format('DD-MM-YYYY'));
+        logger.info('nextAvailableFriday %s', sessionData.nextAvailableFriday);
+        logger.info('Returning running %s', sessionData.running);
+        logger.info('Returning shooting %s', sessionData.shooting);
+        logger.info('Returning fencing %s', sessionData.fencing);
+
+        res.json(sessionData);
+        
+    });
+});
+
+/*
 // get the next session (accessed at GET http://localhost:8082/api/sessions/next)
 router.get('/next', function(req, res) {
 
@@ -87,12 +227,19 @@ router.get('/next', function(req, res) {
                 
                 for (var i = 0; i < session.length; i++) {
 
+                    var storedDate = new Date(session[i].sessionDate)
                     //console.log('session ' + i + ' date ' + session[i].sessionDate.toISOString())
-                    logger.info('session %d date %s', i,session[i].sessionDate.toISOString());
+                    //logger.info('session %d date %s', i,session[i].sessionDate.toISOString());
+                    logger.info('session %d storedDate %s', i, storedDate);
 
-                    if (session[i].sessionDate.toISOString() === nextAvailableFriday.toISOString()) { 
+                    var span = new TimeSpan(storedDate - nextAvailableFriday);
+                    logger.info('span %d', span);
+
+
+                    if (storedDate == nextAvailableFriday) {
+                    //if (session[i].sessionDate.toISOString() === nextAvailableFriday.toISOString()) { 
                         
-                        logger.info('session %d %s is next friday', i, session[i].sessionDate.toISOString());
+                        logger.info('session %d is next friday  %s', i, storedDate);
 
                         //If next friday if found in the db then collect the settings
                         if (fridayCount === 1) {
@@ -116,8 +263,10 @@ router.get('/next', function(req, res) {
                             //This Friday is available so must return its values
                             sessionData.running = session[i].running;
                             sessionData.shooting = session[i].shooting;
-                            sessionData.fencing = session[i].fencing;
-                        }*/
+                            sessionData.fencing = session[i].fencing;    
+                    }*/
+
+/*                    
                     }
                 }
             }
@@ -139,7 +288,7 @@ router.get('/next', function(req, res) {
         
     });
 });
-
+*/
 
 // get all the Sessions (accessed at GET http://localhost:8082/api/sessions)
 router.get('/', authMiddle.isAuthenticated, function(req, res) {
