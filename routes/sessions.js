@@ -101,12 +101,14 @@ router.get('/next', function(req, res) {
                 
                 for (var i = 0; i < session.length; i++) {
 
-                    //logger.info('date valid %s', moment(storedDate).isValid());
+                    logger.info('raw date %s', session[i].sessionDate.toISOString());
+                    logger.info('raw nextavail %s', nextAvailableFriday.toISOString());
+
                     var storedDate = moment(session[i].sessionDate);
                     logger.info('session %d storedDate %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
 
                     //Is next Fri the same date as the one found in the database
-                    var sameDate = moment(storedDate).isSame(nextAvailableFriday);
+                    var sameDate = moment(session[i].sessionDate.toISOString()).isSame(nextAvailableFriday.toISOString());
 
                     if (sameDate) {
                         
@@ -142,7 +144,6 @@ router.get('/next', function(req, res) {
         sessionData.nextAvailableFriday = nAvaiFriday.toDateString();
         
         logger.info('nextActualFriday %s', sessionData.nextActualFriday);
-        //logger.info('nextAvailableFriday %s', nextAvailableFriday.format('DD-MM-YYYY'));
         logger.info('nextAvailableFriday %s', sessionData.nextAvailableFriday);
         logger.info('Returning running %s', sessionData.running);
         logger.info('Returning shooting %s', sessionData.shooting);
