@@ -27,9 +27,9 @@ router.get('/next', function(req, res) {
     var today = new Date(todayWithTime.getFullYear(), todayWithTime.getMonth(), todayWithTime.getDate()).toISOString();
 
 
-    var offset = new Date().getTimezoneOffset();
-    offset = offset *-1;
-    logger.info('offset %s', offset);
+    //var offset = new Date().getTimezoneOffset();
+    //offset = offset *-1;
+    //logger.info('offset %s', offset);
 
     //Find all stored sessions greater than or equal to today
     models.Session.find()
@@ -114,9 +114,10 @@ router.get('/next', function(req, res) {
 
                     //var storedDate = moment(session[i].sessionDate);
                     var storedDate = new Date(session[i].sessionDate);
-                    if (env == 'production') {
-                        storedDate.setMinutes(storedDate.getMinutes()+offset);
-                    }
+                    //if (env == 'development') {
+                    //    logger.info('performing offet');
+                    //    storedDate.setMinutes(storedDate.getMinutes()+60);
+                    //}
                     logger.info('session %d storedDate %s', i, storedDate.toISOString());
 
                     //Is next Fri the same date as the one found in the database
