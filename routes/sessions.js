@@ -56,6 +56,8 @@ router.get('/next', function(req, res) {
 
         nextAvailableFriday = moment(nextFriday);
 
+        logger.info('n f utc %s',moment.utc(nextFriday).format("YYYY-MM-DD HH:mm"));
+
 //**************************** TEST ************************************/
 //while (nextAvailableFriday.weekday() !== weekDayToFind){ 
 //    nextAvailableFriday.add(1, 'day'); 
@@ -102,17 +104,19 @@ router.get('/next', function(req, res) {
                 for (var i = 0; i < session.length; i++) {
 
                     logger.info('raw date %s', session[i].sessionDate.toISOString());
-                    logger.info('raw nextavail %s', nextAvailableFriday.toISOString());
+                    logger.info('raw nextavail %s', nextAvailableFriday.format("YYYY-MM-DD HH:mm"));
 
-                    var storedDate = moment(session[i].sessionDate);
-                    logger.info('session %d storedDate %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
+                    //var storedDate = moment(session[i].sessionDate);
+                    var storedDate = new Date(session[i].sessionDate);
+                    logger.info('session %d storedDate %s', i, storedDate.toDateString());
 
                     //Is next Fri the same date as the one found in the database
-                    var sameDate = moment(session[i].sessionDate.toISOString()).isSame(nextAvailableFriday.toISOString());
+                    var sameDate = moment(storedDate).isSame(nextAvailableFriday);
 
                     if (sameDate) {
                         
-                        logger.info('session %d is next friday  %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
+                        //logger.info('session %d is next friday  %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
+                        logger.info('session %d is next friday  %s', i, storedDate.toDateString());
 
                         //If next friday if found in the db then collect the settings
                         if (fridayCount === 1) {
