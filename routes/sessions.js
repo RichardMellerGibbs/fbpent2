@@ -70,6 +70,13 @@ router.get('/next', function(req, res) {
 //}
 //nextAvailableFriday.add(1, 'day'); 
 //**************************** TEST ************************************/
+/*
+Solution. Store dates with 12:00 time. Now any hour difference will not matter
+Strip time off for comparrison and returning back to the client.
+Perhaps format('YYYYMMDD') and compare dates as strings rather than dates.
+This should solve the problem
+*/
+
 
 
         //Loop until you can find a non cancelled future Friday including today if today is Friday
@@ -112,18 +119,18 @@ router.get('/next', function(req, res) {
                     //logger.info('raw date %s', session[i].sessionDate.toISOString());
                     //logger.info('raw nextavail %s', nextAvailableFriday.format("YYYY-MM-DD HH:mm"));
 
-                    //var storedDate = moment(session[i].sessionDate);
+                    var dbDate = moment(session[i].sessionDate).format('YYYYMMDD').toString();
+                    var nextFri = moment(nextAvailableFriday).format('YYYYMMDD').toString();
                     var storedDate = new Date(session[i].sessionDate);
-                    //if (env == 'development') {
-                    //    logger.info('performing offet');
-                    //    storedDate.setMinutes(storedDate.getMinutes()+60);
-                    //}
-                    logger.info('session %d storedDate %s', i, storedDate.toISOString());
+                    
+                    logger.info('session %d storedDate %s nextFri %s', i, dbDate, nextFri );
 
                     //Is next Fri the same date as the one found in the database
-                    var sameDate = moment(storedDate).isSame(nextAvailableFriday);
+                    //var sameDate = moment(storedDate).isSame(nextAvailableFriday);
 
-                    if (sameDate) {
+                    //if (sameDate) {
+                    if (dbDate === nextFri) {
+                    
                         
                         //logger.info('session %d is next friday  %s', i, storedDate.format("YYYY-MM-DD HH:mm"));
                         logger.info('session %d is next friday  %s', i, storedDate.toDateString());
@@ -352,15 +359,22 @@ router.get('/:session_id', authMiddle.isAuthenticated, function(req, res) {
 //Adding a session entry (accessed at POST http://localhost:8082/api/sessions)
 router.post('/',authMiddle.isAuthenticated, function(req, res) {
   
-    logger.info('Received a request to add a session');
-    
+    logger.info('Received a request to add a XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX session req.body.sessionDate %s', req.body.sessionDate);
+
     //VALIDATION
     if (!req.body.sessionDate) {
         return res.json({ success: false, message: 'No sessionDate specified'});
     }
+
+    //Add 12 hours onto date
+    var newDate = moment.utc(req.body.sessionDate).add('12','hours');
+
+    //moment.utc(newDate).add('hours',9).format('DD-MM-YYYY HH:mm:ss');
+    logger.info('newDate %s',newDate.format());
+    logger.info('plus hours %s',moment.utc(newDate).add('12','hours').format('DD-MM-YYYY HH:mm:ss'));
     
     var session = new models.Session();      // create a new instance of the Session model
-    session.sessionDate = new Date(req.body.sessionDate).toISOString(),
+    session.sessionDate = new Date(newDate).toISOString(),
     session.running = req.body.running;  
     session.shooting = req.body.shooting;  
     session.fencing = req.body.fencing;  
