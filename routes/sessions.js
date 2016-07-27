@@ -14,6 +14,7 @@ var moment      = require('moment');
 
 var superSecret = config.secret;
 
+var env = config.node_env;
 
 // get the next session (accessed at GET http://localhost:8082/api/sessions/next)
 router.get('/next', function(req, res) {
@@ -24,6 +25,11 @@ router.get('/next', function(req, res) {
     //models.Session.find({ sessionDate: todayNoTime }, function(err, session) {
     var todayWithTime = new Date();
     var today = new Date(todayWithTime.getFullYear(), todayWithTime.getMonth(), todayWithTime.getDate()).toISOString();
+
+
+    var offset = new Date().getTimezoneOffset();
+    offset = offset *-1;
+    logger.info('offset %s', offset);
 
     //Find all stored sessions greater than or equal to today
     models.Session.find()
@@ -103,12 +109,15 @@ router.get('/next', function(req, res) {
                 
                 for (var i = 0; i < session.length; i++) {
 
-                    logger.info('raw date %s', session[i].sessionDate.toISOString());
-                    logger.info('raw nextavail %s', nextAvailableFriday.format("YYYY-MM-DD HH:mm"));
+                    //logger.info('raw date %s', session[i].sessionDate.toISOString());
+                    //logger.info('raw nextavail %s', nextAvailableFriday.format("YYYY-MM-DD HH:mm"));
 
                     //var storedDate = moment(session[i].sessionDate);
                     var storedDate = new Date(session[i].sessionDate);
-                    logger.info('session %d storedDate %s', i, storedDate.toDateString());
+                    if (env == 'production') {
+                        storedDate.setMinutes(storedDate.getMinutes()+offset);
+                    }
+                    logger.info('session %d storedDate %s', i, storedDate.toISOString());
 
                     //Is next Fri the same date as the one found in the database
                     var sameDate = moment(storedDate).isSame(nextAvailableFriday);
