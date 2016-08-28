@@ -26,17 +26,19 @@ var ChildSchema = new Schema({
 });
 
 var UserSchema = new Schema({
-	name: { type: String, required: true },
-    username: { type: String, required: true, index: { unique: true }},
-	password: { type: String, required: true, select: false },
-	admin: Boolean,
-    childName: {type: String},
-    childDOB: {type: Date},
-    childMedicalCondition: {type: String},
-    children: [ChildSchema],
-    phone: {type: String},
-    sessions: [SessionSchema],
-    memberships: [MembershipSchema]
+	name:                   { type: String, required: true },
+    username:               { type: String, required: true, index: { unique: true }},
+	password:               { type: String, required: true, select: false },
+	admin:                  Boolean,
+    childName:              {type: String},
+    childDOB:               {type: Date},
+    childMedicalCondition:  {type: String},
+    children:               [ChildSchema],
+    phone:                  {type: String},
+    sessions:               [SessionSchema],
+    memberships:            [MembershipSchema],
+    resetPasswordToken:     String,
+    resetPasswordExpires:   Date
 });
 
 //Hash the password before saving

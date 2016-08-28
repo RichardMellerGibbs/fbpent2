@@ -253,6 +253,46 @@ angular.module('mainCtrl', ['sessionService','authService'])
         $location.path('/home');
         $window.location.href = '/';
     };
+
+
+    // function to handle forgot password
+    vm.forgotPassword = function() {
+
+        vm.error = '';
+        vm.feedback = '';
+
+        //console.log('Maincontroller - forgot password');
+
+        if (vm.loginData.username == undefined) {
+            vm.error = 'Username must be supplied';
+            return;    
+        }
+
+        //console.log('vm.loginData.username ' + vm.loginData.username);
+
+        // call the Auth.login() function
+        Auth.forgotPassword(vm.loginData.username)
+        .success(function(data) {
+
+            vm.processing = false;
+
+            if (data.success) {
+                //console.log('Maincontroller - successfully requested forgot');
+                vm.feedback = 'An email has been sent to your mailbox containing further instructions';
+            }
+            else {
+                //console.log('Maincontroller - failed to request forgot ' + data.message);
+                vm.error = data.message;
+            }
+        })
+        .error(function() {
+            //console.log('Maincontroller error ' + data.message);
+            vm.error = data.message;
+        });
+        
+    };
+
+
     
     
     vm.imageUpload = function(){

@@ -1,0 +1,47 @@
+<div class="login">
+
+    <section class="section-login">
+
+        <div class="row">
+            <h2>Reset Password</h2>
+        </div>
+
+        <div class="row">
+            
+            <div class="login-panel">
+                
+                <div class="col">
+
+                    <form  ng-submit="reset.resetPassword()" class="login-form">
+
+                        <div class="input-group">
+                            <div class="field-title">Password</div>
+                            <input type="password" autocomplete="new-password" ng-model="reset.password" class="form-control bg-white">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="field-title">Confirm Password</div>
+                            <input type="password" autocomplete="confirm-password" ng-model="reset.passwordAgain" class="form-control bg-white">
+                        </div>
+
+                        <!-- Reports any login errors -->
+                        <div class="alert alert-danger" ng-if="reset.error">
+                            {{ reset.error }}
+                        </div>
+
+                        <!-- Reports any login warnings or feedback -->
+                        <div class="alert alert-success fade in warningPanel" ng-if="reset.feedback">
+                            <a class="close" data-dismiss="alert">&times;</a> 
+                            {{ reset.feedback }}
+                        </div>
+
+                        <button type="submit" class="btn btn-block btn-primary">
+                            <span>Reset</span>
+                        </button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

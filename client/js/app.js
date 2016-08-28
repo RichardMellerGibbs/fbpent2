@@ -19,7 +19,8 @@
         'tasterCtrl',
         'contactMembersCtrl',
         'angular-filepicker',
-        'maintHomeCtrl'
+        'maintHomeCtrl',
+		'resetCtrl'
 		])
     
     // application configuration to integrate token into requests
@@ -127,6 +128,12 @@
 			templateUrl: 'components/maintHome/maintHome.html',
 			controller: 'maintHomeController',
             controllerAs: 'maintHome'
+		})
+
+		.when('/reset/:token', {
+			templateUrl: 'components/reset/reset.html',
+			controller: 'resetController',
+			controllerAs: 'reset'
 		})
         
         

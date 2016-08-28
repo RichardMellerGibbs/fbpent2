@@ -30,10 +30,19 @@
                             {{ login.error }}
                         </div>
 
+                        <!-- Reports any login warnings or feedback -->
+                        <div class="alert alert-success fade in warningPanel" ng-if="login.feedback">
+                            <a class="close" data-dismiss="alert">&times;</a> 
+                            {{ login.feedback }}
+                        </div>
+
                         <button type="submit" class="btn btn-block btn-primary">
                             <span ng-if="!login.processing">Sign in</span>
                             <span ng-if="login.processing" class="spinner"><span class="glyphicon glyphico\n-repeat"></span></span>
                         </button>
+                        <div class="forgotPassword">
+                            <a ng-click="login.forgotPassword()">Forgot Password?</a>
+                        </div>
                     </form>
                 </div>
             </div>

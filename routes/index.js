@@ -11,4 +11,6 @@ module.exports = function(app) {
     app.use('/api/events', require('./events.js'));
     app.use('/api/contactUsers', require('./contactUsers.js'));
     app.use('/api/home', require('./home.js'));
+    app.use('/api/forgot', require('./forgot.js'));
+    app.use('/reset', require('./reset.js'));
 };

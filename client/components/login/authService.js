@@ -12,6 +12,55 @@ angular.module('authService', ['storeageFallback'])
     // create auth factory object
     var authFactory = {};
 
+    //Generate token and email 
+    authFactory.forgotPassword = function(username) {
+
+        //console.log('Auth factory - about to post authenticate request');
+        // return the promise object and its data
+        return $http.post('/api/forgot', {
+            username: username
+        })
+        .success(function(data) {
+            //console.log('Auth factory - ' + data.message + ' and success = ' + data.success);
+            
+            return data;
+        })
+        .error(function() {
+            //console.log('Auth factory - failed to call forgot password ' + data.message);
+        });
+    };
+
+    //Confirm token is still valid
+    authFactory.checkForgotPassword = function(token) {
+
+        return $http.get('/reset/' + token, {
+        })
+        .success(function(data) {
+            //console.log('Auth factory - ' + data.message + ' and success = ' + data.success);
+            
+            return data;
+        })
+        .error(function() {
+            //console.log('Auth factory - failed to call check reset token ' + data.message);
+        });
+    };
+
+    //Reset the password for the token
+    authFactory.resetPassword = function(token, password) {
+
+        return $http.post('/reset/' + token, {
+            password: password
+        })
+        .success(function(data) {
+            //console.log('Auth factory - ' + data.message + ' and success = ' + data.success);
+            
+            return data;
+        })
+        .error(function() {
+            //console.log('Auth factory - failed to reset password ' + data.message);
+        });
+    };
+
     // log a user in
     //console.log('Inside auth factory');
     authFactory.login = function(username, password) {
