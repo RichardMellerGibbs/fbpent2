@@ -30,6 +30,9 @@ section.sectionMaintHome {
 .maintHomeForm .input-group {
     width: 100%;
     padding-bottom: 20px;
+ /*   color: #000;
+    font-size: 100%;
+    font-weight: 500;*/
 }
 
 .maintHomeForm .input-group .field-title {

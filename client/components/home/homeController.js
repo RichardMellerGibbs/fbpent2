@@ -112,6 +112,11 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
                     vm.shootCoach2Title = homeData[i].title;         
                     vm.shootCoach2Description = homeData[i].description;         
                 }
+
+                if (homeData[i].name === 'shootCoach3') {
+                    vm.shootCoach3Title = homeData[i].title;         
+                    vm.shootCoach3Description = homeData[i].description;         
+                }
                 
                 if (homeData[i].name === 'fenceCoach1') {
                     vm.fenceCoach1Title = homeData[i].title;         
