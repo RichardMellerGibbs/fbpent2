@@ -12,7 +12,7 @@
 //angular.module('app').controller('homeController', ['$scope', '$location', 'tasterService', 'Auth', 
 //                function($scope, $location, tasterService, Auth) {
                     
-angular.module('homeCtrl', ['tasterService', 'userService','authService','homeService'])
+angular.module('homeCtrl', ['tasterService', 'userService','authService','homeService','pickadate'])
 .controller('homeController', ['$location', 'User', 'Auth', 'Taster', 'Home', function($location, User, Auth, Taster, Home) {
   
     var vm = this;
@@ -25,9 +25,12 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
     
     // get info if a person is logged in
     vm.loggedIn = Auth.isLoggedIn();
+
+    //Turn off the calendar by defualt
+    vm.calendar = false;
     
     //console.log('home controller logged in ' + vm.loggedIn);
-    
+    //vm.sessionDate = moment().day(5).format('DD MMM YYYY');
     
     Home.all()
         .success(function(homeData) {
@@ -135,10 +138,6 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
             }
         });
     
-    /*$scope.saveTaster = function() {
-		console.log('inside the saveTaster function. fn ' + $scope.firstname + ' ' + $scope.sessionDate);
-        tasterService.saveTaster($scope.firstname, $scope.lastname, $scope.email, $scope.message, $scope.sessionDate)
-    };*/
                     
     vm.saveTaster = function() {
 
@@ -146,6 +145,7 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
         vm.error = '';
         
         //console.log('homeController - about to save taster session');
+        //console.log('sessionDate ' + vm.sessionDate);
         
         if (!vm.name) {        
             vm.error = 'Please enter your name';
@@ -156,12 +156,20 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
             vm.error = 'Please choose a session date';
             return;
         }
-        
+
+        //SessionDate must be a Friday
+        var sessiondate = moment(vm.sessionDate);
+        var dow = sessiondate.day();
+
+        if (dow !== 5) {
+            vm.error = 'Session date must be a Friday';
+            return;    
+        }
+
+       
         var tasterData = new Object();
         
         tasterData.name = vm.name;
-        
-        //console.log('homeController - tasterData.firstname ' + tasterData.firstname);
         
         tasterData.childName = vm.childName;
         tasterData.email = vm.email;
@@ -192,9 +200,23 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
         }); 
     }
 
-    
+    //Hides or shows the calendar. So reverses it's current boolean value
+    vm.showCalendar = function() {
+        vm.error = '';
+        vm.calendar = !vm.calendar;
+    }
 
-    
+    //Shows the calendar if not currently shown. Used when date div gets the focus
+    vm.showCalendarIfNotShown = function() {
+
+        vm.error = '';
+
+        if (vm.calendar === false) {
+            vm.calendar = true;
+        }
+        
+    }
+  
 }]);
 
 

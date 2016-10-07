@@ -263,6 +263,11 @@ angular.module('mainCtrl', ['sessionService','authService'])
 
         //console.log('Maincontroller - forgot password');
 
+        if (vm.loginData === undefined) {
+            vm.error = 'Username must be supplied';
+            return;
+        }
+
         if (vm.loginData.username == undefined) {
             vm.error = 'Username must be supplied';
             return;    

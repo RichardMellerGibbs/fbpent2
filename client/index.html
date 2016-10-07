@@ -9,9 +9,9 @@
 		<!--Bootstap mobile-->
 		<title>Five Boroughs Pentathlon</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-      	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
       	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     
@@ -23,21 +23,11 @@
         <!--script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script-->
         <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
         <script src="../js/angular-filepicker.js"></script>
-        <script src="https://api.filestackapi.com/filestack_debug.js"></script>
-        
-        
-      	<!--script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script-->
-		<!--link rel="import" href="../../bower_components/iron-autogrow-textarea.html"-->
-        <!--script src="vendors/js/angular.min.js"></script>
-        <script src="vendors/js/angular-route.min.js"></script>
-        <script src="vendors/js/angular-animate.min.js"></script>
-        <script src="vendors/js/jquery-1.12.0.min.js"></script>
-        <script src="vendors/js/bootstrap.min.js"></script-->
-        
-
+        <!--script src="https://api.filestackapi.com/filestack_debug.js"></script-->
+        <script src="../js/angular-pickadate.js"></script>
+              
       	<!--Main App-->
       	<script src="../js/app.js"></script>
-        <!--script src="../js/modules/scrollTo.js"></script-->
       	<script src="../components/login/mainController.js"></script>
       	<script src="../components/users/userController.js"></script>
         <script src="../components/maintUser/maintUserController.js"></script>
@@ -51,12 +41,10 @@
         <script src="../components/maintHome/maintHomeController.js"></script>
         <script src="../components/tasters/tasterController.js"></script>
         <script src="../components/reset/resetController.js"></script>
-
       	<script src="../components/tasters/tasterService.js"></script>
       	<script src="../components/users/userService.js"></script>
       	<script src="../components/login/authService.js"></script>
         <script src="../components/login/localStorageService.js"></script>
-        
         <script src="../components/sessions/sessionController.js"></script>
         <script src="../components/sessions/sessionService.js"></script>
         <script src="../components/events/eventService.js"></script>
@@ -64,16 +52,12 @@
         <script src="../components/contactMembers/contactMembersService.js"></script>
       	
       	<!--Styling    -->        
-      	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"-->
-      	
-        <!--link rel="stylesheet" href="vendors/css/bootstrap.min.css"-->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-        
-        
-      	<!--link rel="stylesheet" href="vendors/css/ionicons.min.css"-->
       	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="css/angular-pickadate.css" />
+
       	<!--Custom Styling-->
       	<link rel="stylesheet" href="css/master.css">
       	<link rel="stylesheet" href="css/queries.css">
@@ -88,8 +72,8 @@
         <link rel="stylesheet" href="components/maintHome/maintHome.css">
         <link rel="stylesheet" href="components/tasters/taster.css">
         <link rel="stylesheet" href="components/contactMembers/contactMembers.css">
-        
         <link rel="stylesheet" href="components/sessions/session.css">
+        <link rel="stylesheet" href="components/home/home.css">
       	<link href='https://fonts.googleapis.com/css?family=Lato:400,300italic,300,100' rel='stylesheet' type='text/css'> 
         
         <!--Favicon-->
@@ -115,13 +99,12 @@
         <meta name="msapplication-config" content="../images/favicons/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
 	</head>
-
-    <!--input type="filepicker" data-fp-apikey="A7HBT1yxTq6R5H69OP5WMz" onchange="console.log(event.fpfile.url)"-->
     
 	<body ng-app="app" ng-controller="mainController as main">
         
         <div class="logo" ng-if="!main.navlight">
-            <img src="images/logoblack.gif" alt="Logo">
+            <!--img src="images/logoblack.gif" alt="Logo"-->
+            <div class="image"><a href="#/home"><img src="images/logoblack.gif"/></a></div>
             <div class="display-user">{{ main.me.name }} </div>
         </div>
         

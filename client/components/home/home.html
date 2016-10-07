@@ -256,8 +256,13 @@
                         </div>
                         <div class="input-group">
                             <!-- Fridays only -->
-                          <input type="date" step=7 min=2014-09-12 ng-model="home.sessionDate" class="form-control bg-grey">
+                            <!--input type="date" step=7 min=2014-09-12 ng-model="home.sessionDate" class="form-control bg-grey" placeholder="dd-mm-yyyy"-->
+                            <div contentEditable=true data-text="use the calendar to choose a Friday" ng-focus="home.showCalendarIfNotShown()" class="dateEntry form-control bg-grey" placeholder="dd-mm-yyyy">{{home.sessionDate | amDateFormat: 'dddd, Do MMMM' }}</div>
+                            <a ng-click="home.showCalendar()"><i class="ion-calendar"></i></a>
+
+                            <div class="pickDate" pickadate ng-model="home.sessionDate" ng-show="home.calendar" ng-click="home.showCalendar()" format="dd-mm-yyyy"></div>   
                         </div>
+
                         <p class="discrete">* required</p>
                         
                         <div class="alert alert-success fade in warningPanel" ng-if="home.feedback">

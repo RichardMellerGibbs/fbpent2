@@ -1,0 +1,8 @@
+[contentEditable=true]:empty:not(:focus):before{
+        content:attr(data-text)
+    }
+
+.dateEntry {
+    font-weight: 300;
+    font-family: 'Lato','Arial', sans-serif;
+}

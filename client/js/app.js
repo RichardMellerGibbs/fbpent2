@@ -29,7 +29,7 @@
         // attach our auth interceptor to the http requests
         $httpProvider.interceptors.push('AuthInterceptor');
     })
-        
+      
 	.config(function($routeProvider, filepickerProvider) {
     //.config(function($routeProvider, filepickerProvider) {
 	
