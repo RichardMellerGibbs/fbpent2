@@ -72,29 +72,32 @@ angular.module('eventCtrl', ['eventService', 'userService','authService'])
 
                     //Make sure the URL starts with http://
                     var urLlText = data[i].eventUrl;
-                    //console.log('urLlText ' + urLlText);
-                    var urlStart = '';
 
                     if (urLlText != undefined) {
-                        urlStart = urLlText.substring(0, 3);    
-                        //console.log('urlStart ' + urlStart);
+                        //console.log('urLlText ' + urLlText);
+                        var urlStart = '';
+
+                        if (urLlText != undefined) {
+                            urlStart = urLlText.substring(0, 3);    
+                            //console.log('urlStart ' + urlStart);
+                        }
+
+                        var urlValue = '';
+
+                        if (urlStart == 'www') {
+                            urlValue = 'http://' + data[i].eventUrl;
+                        } else {
+                            urlValue = data[i].eventUrl;
+                        }
+
+                        //Prepare the url string
+                        var linkText = "<a href=" + urlValue + ">" + data[i].eventUrlDescription + "</a>";
+                        //console.log('linkText ' + linkText);
+
+                        //Mark the string as guaranteed html for angular
+                        data[i].urlLink = $sce.trustAsHtml(linkText);
+                        //vm.urlLink = $sce.trustAsHtml(linkText);
                     }
-
-                    var urlValue = '';
-
-                    if (urlStart == 'www') {
-                        urlValue = 'http://' + data[i].eventUrl;
-                    } else {
-                        urlValue = data[i].eventUrl;
-                    }
-
-                    //Prepare the url string
-                    var linkText = "<a href=" + urlValue + ">" + data[i].eventUrlDescription + "</a>";
-                    //console.log('linkText ' + linkText);
-
-                    //Mark the string as guaranteed html for angular
-                    data[i].urlLink = $sce.trustAsHtml(linkText);
-                    //vm.urlLink = $sce.trustAsHtml(linkText);
             }
 
             // bind the sessions that come back to vm.sessions

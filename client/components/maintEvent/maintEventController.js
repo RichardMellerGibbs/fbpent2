@@ -1,4 +1,4 @@
-angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
+angular.module('maintEventCtrl', ['eventService', 'userService','authService','pickadate'])
 .controller('maintEventController', ['$location', '$routeParams', 'User', 'Auth', 'Event', 'filepicker',
  function($location, $routeParams, User, Auth, Event, filepicker) {
     
@@ -14,6 +14,9 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
     vm.errorType = 'Error!';
     vm.error = '';
     vm.feedback = '';
+
+    //Turn on the calendar by defualt
+    vm.calendar = true;
     
     //console.log('Inside the maintEventController. event id ' + $routeParams.eventId);
     
@@ -65,6 +68,17 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
         //console.log('adding the event data ');
         
         //VALIDATE FORM
+        if (!vm.eventDate.value) {        
+            vm.error = 'Please choose a session date';
+            return;
+        } else {
+            var validDate = moment(vm.eventDate.value, 'YYYY-MM-DD', true).isValid();
+            if (validDate === false) {
+                vm.error = 'Please enter a valid date in the format YYYY-MM-DD';
+                return;
+            } 
+        }
+
         if (!vm.event.title) {
             vm.error = 'A event title must be supplied';
             return;        
@@ -285,6 +299,29 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService'])
         
                     //{"url":"https://cdn.filepicker.io/api/file/ITR11eYRUyFLiGNvVYIR","filename":"dave_hallam.JPG","mimetype":"image/jpeg","size":64552,"id":1,"client":"computer","isWriteable":true}
     };
+
+    //Hides or shows the calendar. So reverses it's current boolean value
+    vm.showCalendar = function() {
+        vm.error = '';
+        vm.calendar = !vm.calendar;
+    }
+
+    //vm.disabledDates = ['2016-10-07', '2016-10-08'];
+    vm.disabledDates = function(date) {
+        //console.log('calling disabled dates ' + date);
+        //return date.getDay() === 6; // Disable every Sunday
+    }
+
+    //Shows the calendar if not currently shown. Used when date div gets the focus
+    vm.showCalendarIfNotShown = function() {
+
+        vm.error = '';
+
+        if (vm.calendar === false) {
+            vm.calendar = true;
+        }
+        
+    }
     
     
 }]);    

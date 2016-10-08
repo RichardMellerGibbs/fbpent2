@@ -1,6 +1,6 @@
 // start our angular module and inject userService
 
-angular.module('maintSessionCtrl', ['sessionService', 'userService','authService'])
+angular.module('maintSessionCtrl', ['sessionService', 'userService','authService','pickadate'])
 .controller('maintSessionController', ['$location', '$routeParams', 'User', 'Auth', 'Session', function($location, $routeParams, User, Auth, Session) {
     
     var vm = this;
@@ -8,6 +8,8 @@ angular.module('maintSessionCtrl', ['sessionService', 'userService','authService
     vm.showDeleteSection = false;
     vm.addButton = false;
     vm.deleteSessionButton = true;
+    //Turn off the calendar by defualt
+    vm.calendar = true;
     
     vm.sessionDate = {value: ''};
     
@@ -78,18 +80,41 @@ angular.module('maintSessionCtrl', ['sessionService', 'userService','authService
         //console.log('adding the session data ');
         
         //VALIDATE FORM
-        if (!vm.sessionDate.value) {
+        /*if (!vm.sessionDate.value) {
             vm.error = 'A session date must be supplied';
             return;        
-        }
+        }*/
         
         //You cannot choose a Friday which has already been cancelled
-        
         
         if ((!vm.running) && (!vm.shooting) && (!vm.fencing)) {
             vm.error = 'At least one of the sessions must be cancelled';
             return;        
         }
+
+
+        if (!vm.sessionDate.value) {        
+            vm.error = 'Please choose a session date';
+            return;
+        } else {
+            var validDate = moment(vm.sessionDate.value, 'YYYY-MM-DD', true).isValid();
+            if (validDate === false) {
+                vm.error = 'Please enter a valid date in the format YYYY-MM-DD';
+                return;
+            } 
+        }
+
+        //SessionDate must be a Friday
+        var sessiondate = moment(vm.sessionDate.value);
+        var dow = sessiondate.day();
+
+        if (dow !== 5) {
+            vm.error = 'Session date must be a Friday';
+            return;    
+        }
+
+
+
         
         var sessionData = {
             sessionDate: vm.sessionDate.value,
@@ -243,5 +268,28 @@ angular.module('maintSessionCtrl', ['sessionService', 'userService','authService
             //console.log('maintSessionController Result ' + data.message);
             $location.path('/sessions');
         });
+    }
+
+    //Hides or shows the calendar. So reverses it's current boolean value
+    vm.showCalendar = function() {
+        vm.error = '';
+        vm.calendar = !vm.calendar;
+    }
+
+    //vm.disabledDates = ['2016-10-07', '2016-10-08'];
+    vm.disabledDates = function(date) {
+        //console.log('calling disabled dates ' + date);
+        //return date.getDay() === 6; // Disable every Sunday
+    }
+
+    //Shows the calendar if not currently shown. Used when date div gets the focus
+    vm.showCalendarIfNotShown = function() {
+
+        vm.error = '';
+
+        if (vm.calendar === false) {
+            vm.calendar = true;
+        }
+        
     }
 }]);

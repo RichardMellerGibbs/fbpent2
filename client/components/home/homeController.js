@@ -155,6 +155,12 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
         if (!vm.sessionDate) {        
             vm.error = 'Please choose a session date';
             return;
+        } else {
+            var validDate = moment(vm.sessionDate, 'YYYY-MM-DD', true).isValid();
+            if (validDate === false) {
+                vm.error = 'Please enter a valid date in the format YYYY-MM-DD';
+                return;
+            } 
         }
 
         //SessionDate must be a Friday
@@ -204,6 +210,12 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
     vm.showCalendar = function() {
         vm.error = '';
         vm.calendar = !vm.calendar;
+    }
+
+    //vm.disabledDates = ['2016-10-07', '2016-10-08'];
+    vm.disabledDates = function(date) {
+        //console.log('calling disabled dates ' + date);
+        //return date.getDay() === 6; // Disable every Sunday
     }
 
     //Shows the calendar if not currently shown. Used when date div gets the focus

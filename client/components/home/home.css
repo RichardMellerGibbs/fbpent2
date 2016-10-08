@@ -1,4 +1,4 @@
-[contentEditable=true]:empty:not(:focus):before{
+[contentEditable=false]:empty:not(:focus):before{
         content:attr(data-text)
     }
 

@@ -17,7 +17,10 @@
                             
                             <div class="input-group">
                                 <div class="field-title">Event Date</div>
-                                <input type="date" name="eventDate" ng-model="maintEvent.eventDate.value" autofocus class="form-control bg-white">
+                                <!--input type="date" name="eventDate" ng-model="maintEvent.eventDate.value" autofocus class="form-control bg-white"-->
+                                <div contentEditable=false data-text="use the calendar to choose a Friday" ng-focus="maintEvent.showCalendarIfNotShown()" class="dateEntry form-control bg-grey">{{maintEvent.eventDate.value | amDateFormat: 'DD/MM/YYYY' }}</div>
+                                <a ng-click="maintEvent.showCalendar()"><i class="ion-calendar"></i></a>
+                                <div class="pickDate" pickadate ng-model="maintEvent.eventDate.value" ng-show="maintEvent.calendar" format="dd-mm-yyyy"></div>
                             </div>
                             
                             <div class="input-group">

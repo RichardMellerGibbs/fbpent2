@@ -21,7 +21,10 @@
                             <!--div class="sessionDate">{{ land.nextSession | amDateFormat: 'dddd, Do MMMM YYYY' }}</div-->
                             <div class="sessionDate">
                                 <label>Session Date</label>
-                                <div class="dateInput"><input type="date" step=7 min=2014-09-12 name="sessionDate" ng-model="maintSession.sessionDate.value"></div>
+                                <!--div class="dateInput"><input type="date" step=7 min=2014-09-12 name="sessionDate" ng-model="maintSession.sessionDate.value"></div-->
+                                <div contentEditable=false data-text="use the calendar to choose a Friday" ng-focus="maintSession.showCalendarIfNotShown()" class="dateEntry form-control bg-grey">{{maintSession.sessionDate.value | amDateFormat: 'DD/MM/YYYY' }}</div>
+                                <a ng-click="maintSession.showCalendar()"><i class="ion-calendar"></i></a>
+                                <div class="pickDate" pickadate ng-model="maintSession.sessionDate.value" ng-show="maintSession.calendar" format="dd-mm-yyyy"></div>
                             </div>
 
                             <div class="sessionMaint">

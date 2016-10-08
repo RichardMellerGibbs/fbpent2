@@ -249,7 +249,7 @@
                           <input type="text" ng-model="home.childName" class="form-control bg-grey" placeholder="child name*" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group">
-                          <input type="text" ng-model="home.email" class="form-control bg-grey" placeholder="email*" aria-describedby="basic-addon1">
+                          <input type="text" ng-model="home.email" ng-blur="home.showCalendarIfNotShown()" class="form-control bg-grey" placeholder="email*" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group">
                           <input type="text" ng-model="home.medical" class="form-control bg-grey" placeholder="any relavant medical condition" aria-describedby="basic-addon1">
@@ -257,10 +257,12 @@
                         <div class="input-group">
                             <!-- Fridays only -->
                             <!--input type="date" step=7 min=2014-09-12 ng-model="home.sessionDate" class="form-control bg-grey" placeholder="dd-mm-yyyy"-->
-                            <div contentEditable=true data-text="use the calendar to choose a Friday" ng-focus="home.showCalendarIfNotShown()" class="dateEntry form-control bg-grey" placeholder="dd-mm-yyyy">{{home.sessionDate | amDateFormat: 'dddd, Do MMMM' }}</div>
+                            <!--input type="text" ng-model="home.sessionDate" class="form-control bg-grey" placeholder="dd-mm-yyyy" aria-describedby="basic-addon1"-->
+                            <!--contentEditable=true-->
+                            <div contentEditable=false data-text="use the calendar to choose a Friday" ng-focus="home.showCalendarIfNotShown()" class="dateEntry form-control bg-grey">{{home.sessionDate | amDateFormat: 'DD/MM/YYYY' }}</div>
                             <a ng-click="home.showCalendar()"><i class="ion-calendar"></i></a>
 
-                            <div class="pickDate" pickadate ng-model="home.sessionDate" ng-show="home.calendar" ng-click="home.showCalendar()" format="dd-mm-yyyy"></div>   
+                            <div class="pickDate" pickadate ng-model="home.sessionDate" ng-show="home.calendar" format="dd-mm-yyyy"></div>   
                         </div>
 
                         <p class="discrete">* required</p>
