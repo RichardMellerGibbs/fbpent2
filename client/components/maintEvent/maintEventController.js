@@ -1,6 +1,6 @@
 angular.module('maintEventCtrl', ['eventService', 'userService','authService','pickadate'])
-.controller('maintEventController', ['$location', '$routeParams', 'User', 'Auth', 'Event', 'filepicker',
- function($location, $routeParams, User, Auth, Event, filepicker) {
+.controller('maintEventController', ['$scope','$location', '$routeParams', 'User', 'Auth', 'Event', 'filepicker',
+ function($scope, $location, $routeParams, User, Auth, Event, filepicker) {
     
     var vm = this;
     var eventId = '';
@@ -19,6 +19,16 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService','p
     vm.calendar = true;
     
     //console.log('Inside the maintEventController. event id ' + $routeParams.eventId);
+
+    //Watch for the model changing. The date being populated by the picker. Once detected make the picker dissapear
+    $scope.$watch('maintEvent.eventDate.value', function(newValue, oldValue) {
+        if (vm.eventDate.value.length > 0) {
+            //Make the calendar dissapear
+            if (vm.calendar === true) {
+                vm.calendar = false;
+            }
+        }
+    });
     
     
     vm.loggedIn = Auth.isLoggedIn();
@@ -322,6 +332,8 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService','p
         }
         
     }
+
+    
     
     
 }]);    

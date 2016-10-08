@@ -1,7 +1,8 @@
 // start our angular module and inject userService
 
 angular.module('maintSessionCtrl', ['sessionService', 'userService','authService','pickadate'])
-.controller('maintSessionController', ['$location', '$routeParams', 'User', 'Auth', 'Session', function($location, $routeParams, User, Auth, Session) {
+.controller('maintSessionController', ['$scope','$location', '$routeParams', 'User', 'Auth', 'Session'
+,function($scope, $location, $routeParams, User, Auth, Session) {
     
     var vm = this;
     vm.updateButton = true;
@@ -15,6 +16,17 @@ angular.module('maintSessionCtrl', ['sessionService', 'userService','authService
     
     //console.log('Inside the maintSessionController. session id ' + $routeParams.sessionId);
 
+    //Watch for the model changing. The date being populated by the picker. Once detected make the picker dissapear
+    $scope.$watch('maintSession.sessionDate.value', function(newValue, oldValue) {
+        if (vm.sessionDate.value.length > 0) {
+            //Make the calendar dissapear
+            if (vm.calendar === true) {
+                vm.calendar = false;
+            }
+        }
+    });
+
+    
     
     vm.loggedIn = Auth.isLoggedIn();
     

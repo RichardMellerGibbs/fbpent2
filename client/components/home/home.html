@@ -259,10 +259,9 @@
                             <!--input type="date" step=7 min=2014-09-12 ng-model="home.sessionDate" class="form-control bg-grey" placeholder="dd-mm-yyyy"-->
                             <!--input type="text" ng-model="home.sessionDate" class="form-control bg-grey" placeholder="dd-mm-yyyy" aria-describedby="basic-addon1"-->
                             <!--contentEditable=true-->
-                            <div contentEditable=false data-text="use the calendar to choose a Friday" ng-focus="home.showCalendarIfNotShown()" class="dateEntry form-control bg-grey">{{home.sessionDate | amDateFormat: 'DD/MM/YYYY' }}</div>
+                            <div contentEditable=false data-text="use the calendar to choose a Friday"  ng-focus="home.showCalendarIfNotShown()" class="dateEntry form-control bg-grey">{{home.sessionDate | amDateFormat: 'DD/MM/YYYY' }}</div>
                             <a ng-click="home.showCalendar()"><i class="ion-calendar"></i></a>
-
-                            <div class="pickDate" pickadate ng-model="home.sessionDate" ng-show="home.calendar" format="dd-mm-yyyy"></div>   
+                            <div class="pickDate" pickadate ng-model="home.sessionDate" disabled-dates="home.disabledDates" ng-show="home.calendar" format="dd-mm-yyyy"></div>   
                         </div>
 
                         <p class="discrete">* required</p>

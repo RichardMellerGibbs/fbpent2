@@ -13,12 +13,12 @@
 //                function($scope, $location, tasterService, Auth) {
                     
 angular.module('homeCtrl', ['tasterService', 'userService','authService','homeService','pickadate'])
-.controller('homeController', ['$location', 'User', 'Auth', 'Taster', 'Home', function($location, User, Auth, Taster, Home) {
+.controller('homeController', ['$scope', '$location', 'User', 'Auth', 'Taster', 'Home', function($scope, $location, User, Auth, Taster, Home) {
   
     var vm = this;
     vm.errorType = 'Error!';
     
-	//$scope.home = true;
+	vm.sessionDate = '';
     
     vm.mainnav = true;
 	//console.log('called the home controller');
@@ -31,6 +31,47 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
     
     //console.log('home controller logged in ' + vm.loggedIn);
     //vm.sessionDate = moment().day(5).format('DD MMM YYYY');
+
+    //Watch for the model changing. The date being populated by the picker. Once detected make the picker dissapear
+    $scope.$watch('home.sessionDate', function(newValue, oldValue) {
+        if (vm.sessionDate.length > 0) {
+            //Make the calendar dissapear
+            if (vm.calendar === true) {
+                vm.calendar = false;
+            }
+        }
+    });
+
+
+    //Disable any dates not required
+    vm.disableDates = function() {
+
+        //Disable any date prior to today for the last 8 weeks
+        var today = moment();
+
+        var dayToConsider = today;
+        var dow = '';
+        vm.disabledDates = [];
+
+        //Go backwards for a while and add those dates to the disabled list
+        for (i=-1; i>-60; i--) {
+            dayToConsider = moment(today).add(i, 'days');
+            vm.disabledDates.push(dayToConsider.format('YYYY-MM-DD'));
+        }
+        
+        //Disable any future dates apart from Fridays - including today
+        for (i=1; i<360; i++) {
+            dayToConsider = moment(today).add(i, 'days');
+            dow = dayToConsider.day();
+            if (dow !== 5) {
+                vm.disabledDates.push(dayToConsider.format('YYYY-MM-DD'));
+            }
+            //console.log('date to consider ' + dayToConsider.format('DD-MM-YYYY') + ' i = ' + i + ' dow = ' + dow);
+        }
+    }
+    
+    //Call the method to initialse disabling dates
+    vm.disableDates();
     
     Home.all()
         .success(function(homeData) {
@@ -212,22 +253,13 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
         vm.calendar = !vm.calendar;
     }
 
-    //vm.disabledDates = ['2016-10-07', '2016-10-08'];
-    vm.disabledDates = function(date) {
-        //console.log('calling disabled dates ' + date);
-        //return date.getDay() === 6; // Disable every Sunday
-    }
-
     //Shows the calendar if not currently shown. Used when date div gets the focus
     vm.showCalendarIfNotShown = function() {
-
         vm.error = '';
-
         if (vm.calendar === false) {
             vm.calendar = true;
         }
-        
-    }
+    }  
   
 }]);
 

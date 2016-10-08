@@ -1,6 +1,6 @@
 [contentEditable=false]:empty:not(:focus):before{
         content:attr(data-text)
-    }
+}
 
 .dateEntry {
     font-weight: 300;
