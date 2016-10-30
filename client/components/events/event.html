@@ -30,14 +30,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 eventDescCol">
-                                        <div class="eventDesc">
-                                            {{ evnt.description }}
-                                            <!--a href="http://www.facebook.com">Any link</a-->    
-                                            <!--a href="{{mylink}}">Any link</a-->
-                                            <!--span ng-bind-html = "event.urlLink"></span-->
-                                            <span ng-bind-html = "evnt.urlLink"></span>
-                                        </div>
-                                        
+                                        <div class="eventDesc" ng-bind-html="evnt.description | newlines | unsafe"> <span ng-bind-html="evnt.urlLink"></span></div>
                                     </div>
                                     <div class="col-md-4 eventImageCol">
                                         <div class="eventImg">

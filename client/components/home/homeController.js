@@ -1,17 +1,4 @@
 //HOME PAGE CONTROLLER
-/*angular.module('app').controller('contactController', ['$scope', 'contactService', function($scope, contactService) {
-/*angular.module('app').controller('homeController', ['$scope', 'ngScrollTo', function($scope, ngScrollTo) {*/
-/*angular.module('app').controller('homeController', ['$scope', function($scope) {*/
-
-
-//angular.module('eventCtrl', ['eventService', 'userService'])
-
-//.controller('eventController', function($location, User, Auth, Event) {
-
-
-//angular.module('app').controller('homeController', ['$scope', '$location', 'tasterService', 'Auth', 
-//                function($scope, $location, tasterService, Auth) {
-                    
 angular.module('homeCtrl', ['tasterService', 'userService','authService','homeService','pickadate'])
 .controller('homeController', ['$scope', '$location', 'User', 'Auth', 'Taster', 'Home', function($scope, $location, User, Auth, Taster, Home) {
   
@@ -28,6 +15,46 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
 
     //Turn off the calendar by defualt
     vm.calendar = false;
+
+    
+
+        //Disable any dates not required
+    vm.disableDates = function() {
+
+        //Disable any date prior to today for the last 8 weeks
+        var today = moment();
+
+        var dayToConsider = today;
+        var dow = '';
+
+        //Only populate the disabled dates array if not already populated
+        if ($scope.disDates.length === 0) {
+
+            $scope.disDates.push('2016-10-20');
+
+            //console.log('Setting up disabled dates length ' + $scope.disDates.length);
+
+            //Go backwards for a while and add those dates to the disabled list
+            for (i=-1; i>-60; i--) {
+                dayToConsider = moment(today).add(i, 'days');
+                $scope.disDates.push(dayToConsider.format('YYYY-MM-DD'));
+            }
+            
+            //Disable any future dates apart from Fridays - including today
+            for (i=0; i<360; i++) {
+                dayToConsider = moment(today).add(i, 'days');
+                dow = dayToConsider.day();
+                if (dow !== 5) {
+                    $scope.disDates.push(dayToConsider.format('YYYY-MM-DD'));
+                }
+                //console.log('date to consider ' + dayToConsider.format('DD-MM-YYYY') + ' i = ' + i + ' dow = ' + dow);
+            }
+        } 
+    };
+
+    $scope.disDates = [];
+    vm.disableDates();
+    
     
     //console.log('home controller logged in ' + vm.loggedIn);
     //vm.sessionDate = moment().day(5).format('DD MMM YYYY');
@@ -43,10 +70,6 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
     });
 
 
-    
-    
-    
-    
     Home.all()
         .success(function(homeData) {
 
@@ -222,37 +245,7 @@ angular.module('homeCtrl', ['tasterService', 'userService','authService','homeSe
     }
 
 
-    //Disable any dates not required
-    vm.disableDates = function() {
 
-        //Disable any date prior to today for the last 8 weeks
-        var today = moment();
-
-        var dayToConsider = today;
-        var dow = '';
-
-        //Only populate the disabled dates array if not already populated
-        if (vm.disabledDates === undefined) {
-            
-            vm.disabledDates = [];
-
-            //Go backwards for a while and add those dates to the disabled list
-            for (i=-1; i>-60; i--) {
-                dayToConsider = moment(today).add(i, 'days');
-                vm.disabledDates.push(dayToConsider.format('YYYY-MM-DD'));
-            }
-            
-            //Disable any future dates apart from Fridays - including today
-            for (i=0; i<360; i++) {
-                dayToConsider = moment(today).add(i, 'days');
-                dow = dayToConsider.day();
-                if (dow !== 5) {
-                    vm.disabledDates.push(dayToConsider.format('YYYY-MM-DD'));
-                }
-                //console.log('date to consider ' + dayToConsider.format('DD-MM-YYYY') + ' i = ' + i + ' dow = ' + dow);
-            }
-        } 
-    }
 
     //Hides or shows the calendar. So reverses it's current boolean value
     vm.showCalendar = function() {

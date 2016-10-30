@@ -20,11 +20,12 @@ router.post('/',function(req, res) {
     
     var user = new models.User();      // create a new instance of the User model
     
-    if (!req.body.admin) {
+    //Turned this off for security reasons
+    /*if (!req.body.admin) {
         user.admin = false;
     } else {
         user.admin = req.body.admin;
-    }
+    }*/
     
     if (!req.body.username) {
         return res.json({ success: false, message: 'No username specified'});
@@ -49,12 +50,17 @@ router.post('/',function(req, res) {
     } else {
         user.phone = req.body.phone; 
     }
-    
+
+    //Only convert child dob to a string if one is supplied
+    var childDOB;
+    if (req.body.childDOB) {
+        childDOB = new Date(req.body.childDOB).toISOString();
+    }
 
     if (req.body.childName) {
         user.children.push({
             name: req.body.childName,
-            dateOfBirth: new Date(req.body.childDOB).toISOString(),
+            dateOfBirth: childDOB,
             medicalCondition: req.body.childMedicalCondition
         });
     }

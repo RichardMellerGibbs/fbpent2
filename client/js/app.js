@@ -143,4 +143,19 @@
         filepickerProvider.setKey('AefnYNwSgmAycoGb9yH7Az');
 	})
 
+	/* Filter to conver newlines added in test to <br> tags */
+	.filter('newlines', function () {
+		return function (item) {
+			return item.replace(/\n/g, '<br/>');
+		}
+
+	})
+
+	/* This filter is used in conjunction with newlines above to allow the <br> to be interpreted */
+	.filter('unsafe', function($sce) {
+		return function(val) {
+			return $sce.trustAsHtml(val);
+		};
+	})
+
 })();	

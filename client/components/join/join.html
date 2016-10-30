@@ -38,10 +38,27 @@
                 <div class="field-title">Child Name</div>
                 <input type="text" ng-model="join.userData.childName" class="form-control bg-white">
             </div>
+
+            <!--Provide 3 separate text boxes for day, month, and year (labeled appropriately)
+            Sort the text boxes according to the user's culture.
+            Day and Month text boxes should be sized so that a 2 digit input is assumed.
+            Year text box should be sized so that a 4 digit year is assumed.
+            Allow the user to enter a 2 or 4 digit year. Assume a 2 digit year is 1900, and update the textbox to reflect this onBlur (or on a following confirmation step).
+            Allow the user to enter either a month number OR month name.-->
+
             <div class="input-group">
                 <div class="field-title">Child Date of birth</div>
-                <input type="date" ng-model="join.userData.childDOB" class="form-control bg-white">
+                <input type="text" ng-model="join.dobDay" class="form-control bg-white dobDay" placeholder="Day">
+                <input type="text" ng-model="join.dobMonth" class="form-control bg-white dobMonth" placeholder="Month">
+                <input type="text" ng-model="join.dobYear" class="form-control bg-white dobYear" placeholder="Year">
             </div>
+
+
+            <!--div class="input-group">
+                <div class="field-title">Child Date of birth</div>
+                <input type="date" ng-model="join.userData.childDOB" class="form-control bg-white">
+            </div-->
+
             <div class="input-group">
                 <div class="field-title">Any medical conditions</div>
                 <input type="text" ng-model="join.userData.childMedicalCondition" class="form-control bg-white">

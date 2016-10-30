@@ -34,6 +34,20 @@
     font-weight: 400;
 }
 
+.join-form .input-group .dobDay {
+    min-width: 50px;
+    width: 12%;
+}
+
+.join-form .input-group .dobMonth {
+    min-width: 100px;
+    width: 20%;
+}
+
+.join-form .input-group .dobYear {
+    width: 15%;
+}
+
 .form-control:focus {
     border-color: #c33636;
     box-shadow: none;
@@ -47,6 +61,10 @@
 @media only screen and (max-width: 1023px) {
     
     .join-form { width: 70%; };
+ 
+    .join-form .input-group .dobDay {width: 20%;}
+    .join-form .input-group .dobMonth {width: 20%;}
+    .join-form .input-group .dobYear {width: 20%;}
 }
 
 /* -------  Small phones 0 to 480px -------*/
@@ -58,4 +76,11 @@
         width: 100%;
         margin-bottom: 5px; 
     };
+
+    .join-form .input-group .dobDay {
+        width: 30%;
+    }
+
+    .join-form .input-group .dobMonth {width: 30%;}
+    .join-form .input-group .dobYear {width: 30%;}
 }

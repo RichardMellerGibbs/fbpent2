@@ -316,24 +316,12 @@ angular.module('maintEventCtrl', ['eventService', 'userService','authService','p
         vm.calendar = !vm.calendar;
     }
 
-    //vm.disabledDates = ['2016-10-07', '2016-10-08'];
-    vm.disabledDates = function(date) {
-        //console.log('calling disabled dates ' + date);
-        //return date.getDay() === 6; // Disable every Sunday
-    }
-
     //Shows the calendar if not currently shown. Used when date div gets the focus
     vm.showCalendarIfNotShown = function() {
-
         vm.error = '';
-
         if (vm.calendar === false) {
             vm.calendar = true;
-        }
-        
+        } 
     }
 
-    
-    
-    
 }]);    
